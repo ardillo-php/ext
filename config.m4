@@ -40,6 +40,15 @@ fi
 if test "$PHP_ARDILLO" != "no"; then
     AC_DEFINE(HAVE_ARDILLO, 1, [ Have ardillo support ])
 
+    if test ! -e "./libui-ng/ui.h"; then
+        git submodule init
+        git submodule update
+    fi
+
+    if test ! -e "./libui-ng/build/meson-out"; then
+        cd ./libui-ng && meson setup --default-library=static build && ninja -C build && cd ..
+    fi
+
     ARDILLO_CFLAGS="-I./libui-ng"
     UI_LIB="-L./libui-ng/build/meson-out -Wl,-Bstatic -lui"
 
