@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers TableValue_object_handlers;
 
 zend_object* ardillo_create_TableValue_object(zend_class_entry *ce)
@@ -27,7 +26,6 @@ zend_object* ardillo_create_TableValue_object(zend_class_entry *ce)
         return NULL;
     }
 
-
     zval app;
     ZVAL_OBJ(&app, &ardillo_default_app->std);
     zend_update_property(ce, &ardillo_s->std, "app", sizeof("app") - 1, &app);
@@ -42,7 +40,7 @@ void ardillo_free_TableValue_object(zend_object *object)
     ardillo_ui_TableValue_t *ardillo_s = ARDILLO_GET_OBJECT(ardillo_ui_TableValue_t, object);
 
     ardillo_debug_objects(0, "Freeing TableValue @%p (uis @%p, refcount: %d)\n", ardillo_s, ardillo_s->uis, GC_REFCOUNT(&ardillo_s->std));
-    
+
     ardillo_debug_objects(0, "Refcount for TableValue @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -64,14 +62,12 @@ ZEND_METHOD(Ardillo_TableValue, getType)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_TableValue_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_TableValue_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\TableValue::getType on invalid object");
     }
-    
+
     int ret = uiTableValueGetType(this->uis);
 
     RETURN_LONG(ret);
 }
-
-

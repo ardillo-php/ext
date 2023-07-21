@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers DrawMatrix_object_handlers;
 
 zend_object* ardillo_create_DrawMatrix_object(zend_class_entry *ce)
@@ -36,7 +35,7 @@ void ardillo_free_DrawMatrix_object(zend_object *object)
     ardillo_ui_DrawMatrix_t *ardillo_s = ARDILLO_GET_OBJECT(ardillo_ui_DrawMatrix_t, object);
 
     ardillo_debug_objects(0, "Freeing DrawMatrix @%p (uis @%p, refcount: %d)\n", ardillo_s, ardillo_s->uis, GC_REFCOUNT(&ardillo_s->std));
-    
+
     ardillo_debug_objects(0, "Refcount for DrawMatrix @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -63,11 +62,11 @@ ZEND_METHOD(Ardillo_DrawMatrix, setIdentity)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_DrawMatrix_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawMatrix_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\DrawMatrix::setIdentity on invalid object");
     }
-    
+
     uiDrawMatrixSetIdentity(this->uis);
 }
 
@@ -82,12 +81,10 @@ ZEND_METHOD(Ardillo_DrawMatrix, translate)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_DrawMatrix_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawMatrix_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\DrawMatrix::translate on invalid object");
     }
-    
+
     uiDrawMatrixTranslate(this->uis, x, y);
 }
-
-

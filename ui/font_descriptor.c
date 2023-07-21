@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers FontDescriptor_object_handlers;
 
 zend_object* ardillo_create_FontDescriptor_object(zend_class_entry *ce)
@@ -36,7 +35,7 @@ void ardillo_free_FontDescriptor_object(zend_object *object)
     ardillo_ui_FontDescriptor_t *ardillo_s = ARDILLO_GET_OBJECT(ardillo_ui_FontDescriptor_t, object);
 
     ardillo_debug_objects(0, "Freeing FontDescriptor @%p (uis @%p, refcount: %d)\n", ardillo_s, ardillo_s->uis, GC_REFCOUNT(&ardillo_s->std));
-    
+
     ardillo_debug_objects(0, "Refcount for FontDescriptor @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -60,7 +59,7 @@ ZEND_METHOD(Ardillo_FontDescriptor, isValid)
 
 ZEND_METHOD(Ardillo_FontDescriptor, getFamily)
 {
-    
+
     ardillo_ui_FontDescriptor_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_FontDescriptor_t, getThis());
     RETURN_STRING(this->uis->Family);
 }
@@ -79,7 +78,7 @@ ZEND_METHOD(Ardillo_FontDescriptor, setFamily)
 
 ZEND_METHOD(Ardillo_FontDescriptor, getSize)
 {
-    
+
     ardillo_ui_FontDescriptor_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_FontDescriptor_t, getThis());
     RETURN_DOUBLE(this->uis->Size);
 }
@@ -98,7 +97,7 @@ ZEND_METHOD(Ardillo_FontDescriptor, setSize)
 
 ZEND_METHOD(Ardillo_FontDescriptor, getWeight)
 {
-    
+
     ardillo_ui_FontDescriptor_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_FontDescriptor_t, getThis());
     RETURN_LONG((zend_long)this->uis->Weight);
 }
@@ -117,7 +116,7 @@ ZEND_METHOD(Ardillo_FontDescriptor, setWeight)
 
 ZEND_METHOD(Ardillo_FontDescriptor, getItalic)
 {
-    
+
     ardillo_ui_FontDescriptor_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_FontDescriptor_t, getThis());
     RETURN_LONG((zend_long)this->uis->Italic);
 }
@@ -136,7 +135,7 @@ ZEND_METHOD(Ardillo_FontDescriptor, setItalic)
 
 ZEND_METHOD(Ardillo_FontDescriptor, getStretch)
 {
-    
+
     ardillo_ui_FontDescriptor_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_FontDescriptor_t, getThis());
     RETURN_LONG((zend_long)this->uis->Stretch);
 }
@@ -152,5 +151,3 @@ ZEND_METHOD(Ardillo_FontDescriptor, setStretch)
     ardillo_ui_FontDescriptor_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_FontDescriptor_t, getThis());
     this->uis->Stretch = stretch;
 }
-
-

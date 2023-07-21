@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers DrawPath_object_handlers;
 
 zend_object* ardillo_create_DrawPath_object(zend_class_entry *ce)
@@ -39,7 +38,7 @@ void ardillo_free_DrawPath_object(zend_object *object)
 
     ardillo_debug_objects(0, "Freeing native DrawPath @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
     uiDrawFreePath(ardillo_s->uis);
-    
+
     ardillo_debug_objects(0, "Refcount for DrawPath @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -80,11 +79,11 @@ ZEND_METHOD(Ardillo_DrawPath, addRectangle)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_DrawPath_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawPath_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\DrawPath::addRectangle on invalid object");
     }
-    
+
     zval *pt_x, *pt_y, pt_rv;
     pt_x = zend_read_property(ce_Ardillo_Point, Z_OBJ_P(pt), "x", sizeof("x") - 1, 0, &pt_rv);
     ZVAL_DEREF(pt_x);
@@ -110,11 +109,11 @@ ZEND_METHOD(Ardillo_DrawPath, newFigure)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_DrawPath_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawPath_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\DrawPath::newFigure on invalid object");
     }
-    
+
     uiDrawPathNewFigure(this->uis, x, y);
 }
 
@@ -123,11 +122,11 @@ ZEND_METHOD(Ardillo_DrawPath, closeFigure)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_DrawPath_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawPath_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\DrawPath::closeFigure on invalid object");
     }
-    
+
     uiDrawPathCloseFigure(this->uis);
 }
 
@@ -142,11 +141,11 @@ ZEND_METHOD(Ardillo_DrawPath, lineTo)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_DrawPath_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawPath_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\DrawPath::lineTo on invalid object");
     }
-    
+
     uiDrawPathLineTo(this->uis, x, y);
 }
 
@@ -155,12 +154,10 @@ ZEND_METHOD(Ardillo_DrawPath, end)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_DrawPath_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawPath_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\DrawPath::end on invalid object");
     }
-    
+
     uiDrawPathEnd(this->uis);
 }
-
-

@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers Box_object_handlers;
 
 zend_object* ardillo_create_Box_object(zend_class_entry *ce)
@@ -41,7 +40,7 @@ void ardillo_free_Box_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native Box @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for Box @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -63,11 +62,11 @@ ZEND_METHOD(Ardillo_Box, getPadded)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Box_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Box_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Box::getPadded on invalid object");
     }
-    
+
     int ret = uiBoxPadded(this->uis);
 
     RETURN_BOOL(ret);
@@ -82,11 +81,11 @@ ZEND_METHOD(Ardillo_Box, setPadded)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Box_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Box_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Box::setPadded on invalid object");
     }
-    
+
     uiBoxSetPadded(this->uis, (int)padded);
 }
 
@@ -101,11 +100,11 @@ ZEND_METHOD(Ardillo_Box, append)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Box_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Box_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Box::append on invalid object");
     }
-    
+
     uiBoxAppend(this->uis, ARDILLO_ZVAL_GET_UIS(ardillo_ui_Control_t, child), (int)stretchy);
 }
 
@@ -118,11 +117,11 @@ ZEND_METHOD(Ardillo_Box, delete)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Box_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Box_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Box::delete on invalid object");
     }
-    
+
     uiBoxDelete(this->uis, (int)index);
 }
 
@@ -131,14 +130,12 @@ ZEND_METHOD(Ardillo_Box, childrenCount)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Box_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Box_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Box::numChildren on invalid object");
     }
-    
+
     int ret = uiBoxNumChildren(this->uis);
 
     RETURN_LONG(ret);
 }
-
-

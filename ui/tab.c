@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers Tab_object_handlers;
 
 zend_object* ardillo_create_Tab_object(zend_class_entry *ce)
@@ -41,7 +40,7 @@ void ardillo_free_Tab_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native Tab @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for Tab @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -77,11 +76,11 @@ ZEND_METHOD(Ardillo_Tab, getMargined)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Tab_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Tab_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Tab::getMargined on invalid object");
     }
-    
+
     int ret = uiTabMargined(this->uis, (int)index);
 
     RETURN_BOOL(ret);
@@ -98,11 +97,11 @@ ZEND_METHOD(Ardillo_Tab, setMargined)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Tab_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Tab_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Tab::setMargined on invalid object");
     }
-    
+
     uiTabSetMargined(this->uis, (int)index, (int)margined);
 }
 
@@ -117,11 +116,11 @@ ZEND_METHOD(Ardillo_Tab, append)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Tab_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Tab_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Tab::append on invalid object");
     }
-    
+
     uiTabAppend(this->uis, ZSTR_VAL(name), ARDILLO_ZVAL_GET_UIS(ardillo_ui_Control_t, c));
 }
 
@@ -134,11 +133,11 @@ ZEND_METHOD(Ardillo_Tab, delete)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Tab_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Tab_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Tab::delete on invalid object");
     }
-    
+
     uiTabDelete(this->uis, (int)index);
 }
 
@@ -155,11 +154,11 @@ ZEND_METHOD(Ardillo_Tab, insertAt)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Tab_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Tab_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Tab::insertAt on invalid object");
     }
-    
+
     uiTabInsertAt(this->uis, ZSTR_VAL(name), (int)index, ARDILLO_ZVAL_GET_UIS(ardillo_ui_Control_t, c));
 }
 
@@ -168,14 +167,12 @@ ZEND_METHOD(Ardillo_Tab, pageCount)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Tab_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Tab_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Tab::numPages on invalid object");
     }
-    
+
     int ret = uiTabNumPages(this->uis);
 
     RETURN_LONG(ret);
 }
-
-

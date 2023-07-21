@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers DrawBrush_object_handlers;
 
 zend_object* ardillo_create_DrawBrush_object(zend_class_entry *ce)
@@ -36,7 +35,7 @@ void ardillo_free_DrawBrush_object(zend_object *object)
     ardillo_ui_DrawBrush_t *ardillo_s = ARDILLO_GET_OBJECT(ardillo_ui_DrawBrush_t, object);
 
     ardillo_debug_objects(0, "Freeing DrawBrush @%p (uis @%p, refcount: %d)\n", ardillo_s, ardillo_s->uis, GC_REFCOUNT(&ardillo_s->std));
-    
+
     ardillo_debug_objects(0, "Refcount for DrawBrush @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -60,7 +59,7 @@ ZEND_METHOD(Ardillo_DrawBrush, isValid)
 
 ZEND_METHOD(Ardillo_DrawBrush, getType)
 {
-    
+
     ardillo_ui_DrawBrush_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawBrush_t, getThis());
     RETURN_LONG((zend_long)this->uis->Type);
 }
@@ -79,7 +78,7 @@ ZEND_METHOD(Ardillo_DrawBrush, setType)
 
 ZEND_METHOD(Ardillo_DrawBrush, getColor)
 {
-    
+
     ardillo_ui_DrawBrush_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawBrush_t, getThis());
     zval color;
     object_init_ex(&color, ce_Ardillo_Color);
@@ -108,7 +107,7 @@ ZEND_METHOD(Ardillo_DrawBrush, setColor)
 
 ZEND_METHOD(Ardillo_DrawBrush, getPoint0)
 {
-    
+
     ardillo_ui_DrawBrush_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawBrush_t, getThis());
     zval point;
     object_init_ex(&point, ce_Ardillo_Point);
@@ -135,7 +134,7 @@ ZEND_METHOD(Ardillo_DrawBrush, setPoint0)
 
 ZEND_METHOD(Ardillo_DrawBrush, getPoint1)
 {
-    
+
     ardillo_ui_DrawBrush_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawBrush_t, getThis());
     zval point;
     object_init_ex(&point, ce_Ardillo_Point);
@@ -162,7 +161,7 @@ ZEND_METHOD(Ardillo_DrawBrush, setPoint1)
 
 ZEND_METHOD(Ardillo_DrawBrush, getOuterRadius)
 {
-    
+
     ardillo_ui_DrawBrush_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawBrush_t, getThis());
     RETURN_DOUBLE(this->uis->OuterRadius);
 }
@@ -181,7 +180,7 @@ ZEND_METHOD(Ardillo_DrawBrush, setOuterRadius)
 
 ZEND_METHOD(Ardillo_DrawBrush, getStops)
 {
-    
+
     ardillo_ui_DrawBrush_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawBrush_t, getThis());
     ardillo_ui_DrawBrushGradientStop_t *obj = (ardillo_ui_DrawBrushGradientStop_t *)this->uis->Stops;
     zval ret;
@@ -204,7 +203,7 @@ ZEND_METHOD(Ardillo_DrawBrush, setStops)
 
 ZEND_METHOD(Ardillo_DrawBrush, getNumStops)
 {
-    
+
     ardillo_ui_DrawBrush_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawBrush_t, getThis());
     RETURN_LONG((zend_long)this->uis->NumStops);
 }
@@ -220,5 +219,3 @@ ZEND_METHOD(Ardillo_DrawBrush, setNumStops)
     ardillo_ui_DrawBrush_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawBrush_t, getThis());
     this->uis->NumStops = numStops;
 }
-
-

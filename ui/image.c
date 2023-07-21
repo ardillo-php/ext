@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers Image_object_handlers;
 
 zend_object* ardillo_create_Image_object(zend_class_entry *ce)
@@ -39,7 +38,7 @@ void ardillo_free_Image_object(zend_object *object)
 
     ardillo_debug_objects(0, "Freeing native Image @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
     uiFreeImage(ardillo_s->uis);
-    
+
     ardillo_debug_objects(0, "Refcount for Image @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -70,7 +69,6 @@ ZEND_METHOD(Ardillo_Image, __construct)
     this->uis = uiNewImage(width, height);
     ardillo_debug_objects(0, "Constructing Image @%p (uis @ %p)\n", this, this->uis);
 }
-
 
 uint8_t doubleToUint8(double value)
 {

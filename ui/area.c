@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers Area_object_handlers;
 
 zend_object* ardillo_create_Area_object(zend_class_entry *ce)
@@ -27,7 +26,6 @@ zend_object* ardillo_create_Area_object(zend_class_entry *ce)
         return NULL;
     }
 
-
     zval app;
     ZVAL_OBJ(&app, &ardillo_default_app->std);
     zend_update_property(ce, &ardillo_s->std, "app", sizeof("app") - 1, &app);
@@ -47,7 +45,7 @@ void ardillo_free_Area_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native Area @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for Area @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -84,12 +82,10 @@ ZEND_METHOD(Ardillo_Area, queueRedrawAll)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Area_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Area_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Area::queueRedrawAll on invalid object");
     }
-    
+
     uiAreaQueueRedrawAll(this->uis);
 }
-
-

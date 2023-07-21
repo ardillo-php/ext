@@ -16,7 +16,7 @@ void ardillo_call_AreaHandler_dragBrokenHandler(uiAreaHandler *uis, uiArea *area
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_AreaHandler_t *)this)->std, method, &retval, 1, args);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -39,7 +39,7 @@ void ardillo_call_AreaHandler_drawHandler(uiAreaHandler *uis, uiArea *area, uiAr
     zval args[2];
     zval retval;
     ZVAL_OBJ(&args[0], &((ardillo_ui_Area_t *)uiAreaGetUserData(area))->std);
-    
+
     if (params) {
         zend_object *params_obj = ardillo_create_AreaDrawParams_object(ce_Ardillo_AreaDrawParams);
         ardillo_ui_AreaDrawParams_t *params_wrapped = ARDILLO_GET_OBJECT(ardillo_ui_AreaDrawParams_t, params_obj);
@@ -53,7 +53,7 @@ void ardillo_call_AreaHandler_drawHandler(uiAreaHandler *uis, uiArea *area, uiAr
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_AreaHandler_t *)this)->std, method, &retval, 2, args);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
     zval_ptr_dtor(&args[1]);
 
@@ -77,7 +77,7 @@ int ardillo_call_AreaHandler_keyEventHandler(uiAreaHandler *uis, uiArea *area, u
     zval args[2];
     zval retval;
     ZVAL_OBJ(&args[0], &((ardillo_ui_Area_t *)uiAreaGetUserData(area))->std);
-    
+
     if (event) {
         zend_object *event_obj = ardillo_create_AreaKeyEvent_object(ce_Ardillo_AreaKeyEvent);
         ardillo_ui_AreaKeyEvent_t *event_wrapped = ARDILLO_GET_OBJECT(ardillo_ui_AreaKeyEvent_t, event_obj);
@@ -120,7 +120,7 @@ void ardillo_call_AreaHandler_mouseCrossedHandler(uiAreaHandler *uis, uiArea *ar
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_AreaHandler_t *)this)->std, method, &retval, 2, args);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -145,7 +145,7 @@ void ardillo_call_AreaHandler_mouseEventHandler(uiAreaHandler *uis, uiArea *area
     zval args[2];
     zval retval;
     ZVAL_OBJ(&args[0], &((ardillo_ui_Area_t *)uiAreaGetUserData(area))->std);
-    
+
     if (event) {
         zend_object *event_obj = ardillo_create_AreaMouseEvent_object(ce_Ardillo_AreaMouseEvent);
         ardillo_ui_AreaMouseEvent_t *event_wrapped = ARDILLO_GET_OBJECT(ardillo_ui_AreaMouseEvent_t, event_obj);
@@ -159,7 +159,7 @@ void ardillo_call_AreaHandler_mouseEventHandler(uiAreaHandler *uis, uiArea *area
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_AreaHandler_t *)this)->std, method, &retval, 2, args);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
     zval_ptr_dtor(&args[1]);
 
@@ -176,7 +176,6 @@ void ardillo_call_AreaHandler_mouseEventHandler(uiAreaHandler *uis, uiArea *area
 
     return;
 }
-
 
 zend_object_handlers AreaHandler_object_handlers;
 
@@ -204,7 +203,6 @@ zend_object* ardillo_create_AreaHandler_object(zend_class_entry *ce)
         return NULL;
     }
 
-
     zval app;
     ZVAL_OBJ(&app, &ardillo_default_app->std);
     zend_update_property(ce, &ardillo_s->std, "app", sizeof("app") - 1, &app);
@@ -219,7 +217,7 @@ void ardillo_free_AreaHandler_object(zend_object *object)
     ardillo_ui_AreaHandler_t *ardillo_s = ARDILLO_GET_OBJECT(ardillo_ui_AreaHandler_t, object);
 
     ardillo_debug_objects(0, "Freeing AreaHandler @%p (uis @%p, refcount: %d)\n", ardillo_s, ardillo_s->uis, GC_REFCOUNT(&ardillo_s->std));
-    
+
     ardillo_debug_objects(0, "Refcount for AreaHandler @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -240,5 +238,3 @@ ZEND_METHOD(Ardillo_AreaHandler, isValid)
 
     RETURN_BOOL(this->uis != NULL);
 }
-
-

@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers TableValueImage_object_handlers;
 
 zend_object* ardillo_create_TableValueImage_object(zend_class_entry *ce)
@@ -36,7 +35,7 @@ void ardillo_free_TableValueImage_object(zend_object *object)
     ardillo_ui_TableValueImage_t *ardillo_s = ARDILLO_GET_OBJECT(ardillo_ui_TableValueImage_t, object);
 
     ardillo_debug_objects(0, "Freeing TableValueImage @%p (uis @%p, refcount: %d)\n", ardillo_s, ardillo_s->uis, GC_REFCOUNT(&ardillo_s->std));
-    
+
     ardillo_debug_objects(0, "Refcount for TableValueImage @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -65,7 +64,6 @@ ZEND_METHOD(Ardillo_TableValueImage, __construct)
     this->uis = uiNewTableValueImage(ARDILLO_ZVAL_GET_UIS(ardillo_ui_Image_t, img));
     ardillo_debug_objects(0, "Constructing TableValueImage @%p (uis @ %p)\n", this, this->uis);
 }
-
 
 ZEND_METHOD(Ardillo_TableValueImage, get)
 {

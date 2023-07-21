@@ -673,6 +673,4 @@ typedef struct _ardillo_ui_TableValueColor_t {
 zend_object * ardillo_create_TableValueColor_object(zend_class_entry *ce);
 void ardillo_free_TableValueColor_object(zend_object *object);
 
-
-
 #endif /* __ARDILLO_UI_TYPES_H */

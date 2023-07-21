@@ -13,7 +13,7 @@ void ardillo_call_Slider_onChanged(uiSlider *uis, void *this)
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_Slider_t *)this)->std, method, &retval, 0, NULL);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -35,7 +35,7 @@ void ardillo_call_Slider_onReleased(uiSlider *uis, void *this)
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_Slider_t *)this)->std, method, &retval, 0, NULL);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -49,7 +49,6 @@ void ardillo_call_Slider_onReleased(uiSlider *uis, void *this)
 
     return;
 }
-
 
 zend_object_handlers Slider_object_handlers;
 
@@ -85,7 +84,7 @@ void ardillo_free_Slider_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native Slider @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for Slider @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -125,11 +124,11 @@ ZEND_METHOD(Ardillo_Slider, getHasToolTip)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Slider_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Slider_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Slider::getHasToolTip on invalid object");
     }
-    
+
     int ret = uiSliderHasToolTip(this->uis);
 
     RETURN_BOOL(ret);
@@ -144,11 +143,11 @@ ZEND_METHOD(Ardillo_Slider, setHasToolTip)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Slider_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Slider_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Slider::setHasToolTip on invalid object");
     }
-    
+
     uiSliderSetHasToolTip(this->uis, (int)hasToolTip);
 }
 
@@ -157,11 +156,11 @@ ZEND_METHOD(Ardillo_Slider, getValue)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Slider_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Slider_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Slider::getValue on invalid object");
     }
-    
+
     int ret = uiSliderValue(this->uis);
 
     RETURN_LONG(ret);
@@ -176,11 +175,11 @@ ZEND_METHOD(Ardillo_Slider, setValue)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Slider_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Slider_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Slider::setValue on invalid object");
     }
-    
+
     uiSliderSetValue(this->uis, (int)value);
 }
 
@@ -209,12 +208,10 @@ ZEND_METHOD(Ardillo_Slider, setRange)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Slider_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Slider_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Slider::setRange on invalid object");
     }
-    
+
     uiSliderSetRange(this->uis, (int)min, (int)max);
 }
-
-

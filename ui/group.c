@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers Group_object_handlers;
 
 zend_object* ardillo_create_Group_object(zend_class_entry *ce)
@@ -41,7 +40,7 @@ void ardillo_free_Group_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native Group @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for Group @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -77,11 +76,11 @@ ZEND_METHOD(Ardillo_Group, getMargined)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Group_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Group_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Group::getMargined on invalid object");
     }
-    
+
     int ret = uiGroupMargined(this->uis);
 
     RETURN_BOOL(ret);
@@ -96,11 +95,11 @@ ZEND_METHOD(Ardillo_Group, setMargined)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Group_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Group_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Group::setMargined on invalid object");
     }
-    
+
     uiGroupSetMargined(this->uis, (int)margined);
 }
 
@@ -109,11 +108,11 @@ ZEND_METHOD(Ardillo_Group, getTitle)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Group_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Group_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Group::getTitle on invalid object");
     }
-    
+
     char *ret = (char *)uiGroupTitle(this->uis);
 
     RETVAL_STRING(ret);
@@ -129,11 +128,11 @@ ZEND_METHOD(Ardillo_Group, setTitle)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Group_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Group_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Group::setTitle on invalid object");
     }
-    
+
     uiGroupSetTitle(this->uis, ZSTR_VAL(title));
 }
 
@@ -146,12 +145,10 @@ ZEND_METHOD(Ardillo_Group, setChild)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Group_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Group_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Group::setChild on invalid object");
     }
-    
+
     uiGroupSetChild(this->uis, ARDILLO_ZVAL_GET_UIS(ardillo_ui_Control_t, c));
 }
-
-

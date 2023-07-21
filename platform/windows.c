@@ -80,7 +80,7 @@ void ardillo_windows_on_stream_event(struct epoll_event *event)
 
         ardillo_debug("ardillo_windows_on_stream_event() Rearming %d read: %d, write: %d\n",
             fd, (rearm & EPOLLIN) ? 1 : 0, (rearm & EPOLLOUT) ? 1 : 0);
-        
+
         if (epoll_ctl(ardillo_ephnd, EPOLL_CTL_MOD, fd, event) == -1) {
             ardillo_debug("ardillo_windows_on_stream_event() Cannot rearm %d read: %d, write: %d (errno: %d)",
                 fd, (rearm & EPOLLIN) ? 1 : 0, (rearm & EPOLLOUT) ? 1 : 0, errno);

@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers InitOptions_object_handlers;
 
 zend_object* ardillo_create_InitOptions_object(zend_class_entry *ce)
@@ -36,7 +35,7 @@ void ardillo_free_InitOptions_object(zend_object *object)
     ardillo_ui_InitOptions_t *ardillo_s = ARDILLO_GET_OBJECT(ardillo_ui_InitOptions_t, object);
 
     ardillo_debug_objects(0, "Freeing InitOptions @%p (uis @%p, refcount: %d)\n", ardillo_s, ardillo_s->uis, GC_REFCOUNT(&ardillo_s->std));
-    
+
     ardillo_debug_objects(0, "Refcount for InitOptions @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -55,7 +54,7 @@ ZEND_METHOD(Ardillo_InitOptions, isValid)
 
 ZEND_METHOD(Ardillo_InitOptions, getSize)
 {
-    
+
     ardillo_ui_InitOptions_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_InitOptions_t, getThis());
     RETURN_LONG((zend_long)this->uis->Size);
 }
@@ -71,5 +70,3 @@ ZEND_METHOD(Ardillo_InitOptions, setSize)
     ardillo_ui_InitOptions_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_InitOptions_t, getThis());
     this->uis->Size = size;
 }
-
-

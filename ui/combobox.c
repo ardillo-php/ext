@@ -13,7 +13,7 @@ void ardillo_call_Combobox_onSelected(uiCombobox *uis, void *this)
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_Combobox_t *)this)->std, method, &retval, 0, NULL);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -27,7 +27,6 @@ void ardillo_call_Combobox_onSelected(uiCombobox *uis, void *this)
 
     return;
 }
-
 
 zend_object_handlers Combobox_object_handlers;
 
@@ -63,7 +62,7 @@ void ardillo_free_Combobox_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native Combobox @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for Combobox @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -96,11 +95,11 @@ ZEND_METHOD(Ardillo_Combobox, getSelected)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Combobox_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Combobox_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Combobox::getSelected on invalid object");
     }
-    
+
     int ret = uiComboboxSelected(this->uis);
 
     RETURN_LONG(ret);
@@ -115,11 +114,11 @@ ZEND_METHOD(Ardillo_Combobox, setSelected)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Combobox_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Combobox_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Combobox::setSelected on invalid object");
     }
-    
+
     uiComboboxSetSelected(this->uis, (int)index);
 }
 
@@ -139,11 +138,11 @@ ZEND_METHOD(Ardillo_Combobox, append)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Combobox_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Combobox_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Combobox::append on invalid object");
     }
-    
+
     uiComboboxAppend(this->uis, ZSTR_VAL(text));
 }
 
@@ -152,11 +151,11 @@ ZEND_METHOD(Ardillo_Combobox, clear)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Combobox_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Combobox_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Combobox::clear on invalid object");
     }
-    
+
     uiComboboxClear(this->uis);
 }
 
@@ -169,11 +168,11 @@ ZEND_METHOD(Ardillo_Combobox, delete)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Combobox_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Combobox_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Combobox::delete on invalid object");
     }
-    
+
     uiComboboxDelete(this->uis, (int)index);
 }
 
@@ -188,11 +187,11 @@ ZEND_METHOD(Ardillo_Combobox, insertAt)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Combobox_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Combobox_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Combobox::insertAt on invalid object");
     }
-    
+
     uiComboboxInsertAt(this->uis, (int)index, ZSTR_VAL(text));
 }
 
@@ -201,14 +200,12 @@ ZEND_METHOD(Ardillo_Combobox, numItems)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Combobox_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Combobox_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Combobox::numItems on invalid object");
     }
-    
+
     int ret = uiComboboxNumItems(this->uis);
 
     RETURN_LONG(ret);
 }
-
-

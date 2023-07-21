@@ -13,7 +13,7 @@ void ardillo_call_Spinbox_onChanged(uiSpinbox *uis, void *this)
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_Spinbox_t *)this)->std, method, &retval, 0, NULL);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -27,7 +27,6 @@ void ardillo_call_Spinbox_onChanged(uiSpinbox *uis, void *this)
 
     return;
 }
-
 
 zend_object_handlers Spinbox_object_handlers;
 
@@ -63,7 +62,7 @@ void ardillo_free_Spinbox_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native Spinbox @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for Spinbox @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -102,11 +101,11 @@ ZEND_METHOD(Ardillo_Spinbox, getValue)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Spinbox_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Spinbox_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Spinbox::getValue on invalid object");
     }
-    
+
     int ret = uiSpinboxValue(this->uis);
 
     RETURN_LONG(ret);
@@ -121,11 +120,11 @@ ZEND_METHOD(Ardillo_Spinbox, setValue)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Spinbox_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Spinbox_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Spinbox::setValue on invalid object");
     }
-    
+
     uiSpinboxSetValue(this->uis, (int)value);
 }
 
@@ -135,5 +134,3 @@ ZEND_METHOD(Ardillo_Spinbox, onChanged)
 
     RETURN_NULL();
 }
-
-

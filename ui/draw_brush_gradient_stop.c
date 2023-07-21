@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers DrawBrushGradientStop_object_handlers;
 
 zend_object* ardillo_create_DrawBrushGradientStop_object(zend_class_entry *ce)
@@ -36,7 +35,7 @@ void ardillo_free_DrawBrushGradientStop_object(zend_object *object)
     ardillo_ui_DrawBrushGradientStop_t *ardillo_s = ARDILLO_GET_OBJECT(ardillo_ui_DrawBrushGradientStop_t, object);
 
     ardillo_debug_objects(0, "Freeing DrawBrushGradientStop @%p (uis @%p, refcount: %d)\n", ardillo_s, ardillo_s->uis, GC_REFCOUNT(&ardillo_s->std));
-    
+
     ardillo_debug_objects(0, "Refcount for DrawBrushGradientStop @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -55,7 +54,7 @@ ZEND_METHOD(Ardillo_DrawBrushGradientStop, isValid)
 
 ZEND_METHOD(Ardillo_DrawBrushGradientStop, getPos)
 {
-    
+
     ardillo_ui_DrawBrushGradientStop_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawBrushGradientStop_t, getThis());
     RETURN_DOUBLE(this->uis->Pos);
 }
@@ -74,7 +73,7 @@ ZEND_METHOD(Ardillo_DrawBrushGradientStop, setPos)
 
 ZEND_METHOD(Ardillo_DrawBrushGradientStop, getColor)
 {
-    
+
     ardillo_ui_DrawBrushGradientStop_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawBrushGradientStop_t, getThis());
     zval color;
     object_init_ex(&color, ce_Ardillo_Color);
@@ -100,5 +99,3 @@ ZEND_METHOD(Ardillo_DrawBrushGradientStop, setColor)
     this->uis->B = Z_DVAL_P(zend_read_property(ce_Ardillo_Color, Z_OBJ_P(color), "blue", sizeof("blue") - 1, 0, &color_rv));
     this->uis->A = Z_DVAL_P(zend_read_property(ce_Ardillo_Color, Z_OBJ_P(color), "alpha", sizeof("alpha") - 1, 0, &color_rv));
 }
-
-

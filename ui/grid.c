@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers Grid_object_handlers;
 
 zend_object* ardillo_create_Grid_object(zend_class_entry *ce)
@@ -41,7 +40,7 @@ void ardillo_free_Grid_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native Grid @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for Grid @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -73,11 +72,11 @@ ZEND_METHOD(Ardillo_Grid, getPadded)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Grid_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Grid_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Grid::getPadded on invalid object");
     }
-    
+
     int ret = uiGridPadded(this->uis);
 
     RETURN_BOOL(ret);
@@ -92,11 +91,11 @@ ZEND_METHOD(Ardillo_Grid, setPadded)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Grid_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Grid_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Grid::setPadded on invalid object");
     }
-    
+
     uiGridSetPadded(this->uis, (int)padded);
 }
 
@@ -125,11 +124,11 @@ ZEND_METHOD(Ardillo_Grid, append)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Grid_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Grid_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Grid::append on invalid object");
     }
-    
+
     uiGridAppend(this->uis, ARDILLO_ZVAL_GET_UIS(ardillo_ui_Control_t, c), (int)left, (int)top, (int)xspan, (int)yspan, (int)hexpand, (int)halign, (int)vexpand, (int)valign);
 }
 
@@ -158,12 +157,10 @@ ZEND_METHOD(Ardillo_Grid, insertAt)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Grid_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Grid_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Grid::insertAt on invalid object");
     }
-    
+
     uiGridInsertAt(this->uis, ARDILLO_ZVAL_GET_UIS(ardillo_ui_Control_t, c), ARDILLO_ZVAL_GET_UIS(ardillo_ui_Control_t, existing), at, (int)xspan, (int)yspan, (int)hexpand, (int)halign, (int)vexpand, (int)valign);
 }
-
-

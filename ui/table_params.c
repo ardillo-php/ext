@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers TableParams_object_handlers;
 
 zend_object* ardillo_create_TableParams_object(zend_class_entry *ce)
@@ -36,7 +35,7 @@ void ardillo_free_TableParams_object(zend_object *object)
     ardillo_ui_TableParams_t *ardillo_s = ARDILLO_GET_OBJECT(ardillo_ui_TableParams_t, object);
 
     ardillo_debug_objects(0, "Freeing TableParams @%p (uis @%p, refcount: %d)\n", ardillo_s, ardillo_s->uis, GC_REFCOUNT(&ardillo_s->std));
-    
+
     ardillo_debug_objects(0, "Refcount for TableParams @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -60,7 +59,7 @@ ZEND_METHOD(Ardillo_TableParams, isValid)
 
 ZEND_METHOD(Ardillo_TableParams, getModel)
 {
-    
+
     ardillo_ui_TableParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_TableParams_t, getThis());
     ardillo_ui_TableModel_t *obj = (ardillo_ui_TableModel_t *)this->uis->Model;
     zval ret;
@@ -83,7 +82,7 @@ ZEND_METHOD(Ardillo_TableParams, setModel)
 
 ZEND_METHOD(Ardillo_TableParams, getRowBackgroundColorModelColumn)
 {
-    
+
     ardillo_ui_TableParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_TableParams_t, getThis());
     RETURN_LONG((zend_long)this->uis->RowBackgroundColorModelColumn);
 }
@@ -99,5 +98,3 @@ ZEND_METHOD(Ardillo_TableParams, setRowBackgroundColorModelColumn)
     ardillo_ui_TableParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_TableParams_t, getThis());
     this->uis->RowBackgroundColorModelColumn = rowBackgroundColorModelColumn;
 }
-
-

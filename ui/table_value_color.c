@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers TableValueColor_object_handlers;
 
 zend_object* ardillo_create_TableValueColor_object(zend_class_entry *ce)
@@ -36,7 +35,7 @@ void ardillo_free_TableValueColor_object(zend_object *object)
     ardillo_ui_TableValueColor_t *ardillo_s = ARDILLO_GET_OBJECT(ardillo_ui_TableValueColor_t, object);
 
     ardillo_debug_objects(0, "Freeing TableValueColor @%p (uis @%p, refcount: %d)\n", ardillo_s, ardillo_s->uis, GC_REFCOUNT(&ardillo_s->std));
-    
+
     ardillo_debug_objects(0, "Refcount for TableValueColor @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -62,7 +61,7 @@ ZEND_METHOD(Ardillo_TableValueColor, __construct)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_TableValueColor_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_TableValueColor_t, getThis());
-    
+
     zval *color_r, *color_g, *color_b, *color_a, rv;
     color_r = zend_read_property(ce_Ardillo_Color, Z_OBJ_P(color), "red", sizeof("red") - 1, 0, &rv);
     ZVAL_DEREF(color_r);
@@ -76,7 +75,6 @@ ZEND_METHOD(Ardillo_TableValueColor, __construct)
     this->uis = uiNewTableValueColor(zval_get_double(color_r), zval_get_double(color_g), zval_get_double(color_b), zval_get_double(color_a));
     ardillo_debug_objects(0, "Constructing TableValueColor @%p (uis @ %p)\n", this, this->uis);
 }
-
 
 ZEND_METHOD(Ardillo_TableValueColor, get)
 {

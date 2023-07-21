@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers Label_object_handlers;
 
 zend_object* ardillo_create_Label_object(zend_class_entry *ce)
@@ -41,7 +40,7 @@ void ardillo_free_Label_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native Label @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for Label @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -77,11 +76,11 @@ ZEND_METHOD(Ardillo_Label, getText)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Label_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Label_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Label::getText on invalid object");
     }
-    
+
     char *ret = (char *)uiLabelText(this->uis);
 
     RETVAL_STRING(ret);
@@ -97,12 +96,10 @@ ZEND_METHOD(Ardillo_Label, setText)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Label_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Label_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Label::setText on invalid object");
     }
-    
+
     uiLabelSetText(this->uis, ZSTR_VAL(text));
 }
-
-

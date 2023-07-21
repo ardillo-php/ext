@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers Form_object_handlers;
 
 zend_object* ardillo_create_Form_object(zend_class_entry *ce)
@@ -41,7 +40,7 @@ void ardillo_free_Form_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native Form @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for Form @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -73,11 +72,11 @@ ZEND_METHOD(Ardillo_Form, getPadded)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Form_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Form_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Form::getPadded on invalid object");
     }
-    
+
     int ret = uiFormPadded(this->uis);
 
     RETURN_BOOL(ret);
@@ -92,11 +91,11 @@ ZEND_METHOD(Ardillo_Form, setPadded)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Form_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Form_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Form::setPadded on invalid object");
     }
-    
+
     uiFormSetPadded(this->uis, (int)padded);
 }
 
@@ -113,11 +112,11 @@ ZEND_METHOD(Ardillo_Form, append)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Form_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Form_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Form::append on invalid object");
     }
-    
+
     uiFormAppend(this->uis, ZSTR_VAL(label), ARDILLO_ZVAL_GET_UIS(ardillo_ui_Control_t, c), (int)stretchy);
 }
 
@@ -130,11 +129,11 @@ ZEND_METHOD(Ardillo_Form, delete)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Form_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Form_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Form::delete on invalid object");
     }
-    
+
     uiFormDelete(this->uis, (int)index);
 }
 
@@ -143,14 +142,12 @@ ZEND_METHOD(Ardillo_Form, childrenCount)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Form_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Form_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Form::numChildren on invalid object");
     }
-    
+
     int ret = uiFormNumChildren(this->uis);
 
     RETURN_LONG(ret);
 }
-
-

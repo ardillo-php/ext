@@ -18,7 +18,7 @@ uiTableValue * ardillo_call_TableModelHandler_cellValueHandler(uiTableModelHandl
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_TableModelHandler_t *)this)->std, method, &retval, 3, args);
     zend_string_release(method);
-    
+
     if (Z_TYPE(retval) != IS_OBJECT) {
         zend_error(E_CORE_ERROR, "Ardillo\\TableModelHandler::cellValueHandler must return an object");
         return NULL;
@@ -137,7 +137,7 @@ void ardillo_call_TableModelHandler_setCellValueHandler(uiTableModelHandler *uis
     ZVAL_OBJ(&args[0], &((ardillo_ui_TableModel_t *)uiTableModelGetUserData(model))->std);
     ZVAL_LONG(&args[1], (zend_long)row);
     ZVAL_LONG(&args[2], (zend_long)column);
-    
+
     if (value) {
         switch (uiTableValueGetType(value)) {
             case uiTableValueTypeString: {
@@ -180,7 +180,7 @@ void ardillo_call_TableModelHandler_setCellValueHandler(uiTableModelHandler *uis
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_TableModelHandler_t *)this)->std, method, &retval, 4, args);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
     zval_ptr_dtor(&args[3]);
 
@@ -201,7 +201,6 @@ void ardillo_call_TableModelHandler_setCellValueHandler(uiTableModelHandler *uis
 
     return;
 }
-
 
 zend_object_handlers TableModelHandler_object_handlers;
 
@@ -229,7 +228,6 @@ zend_object* ardillo_create_TableModelHandler_object(zend_class_entry *ce)
         return NULL;
     }
 
-
     zval app;
     ZVAL_OBJ(&app, &ardillo_default_app->std);
     zend_update_property(ce, &ardillo_s->std, "app", sizeof("app") - 1, &app);
@@ -244,7 +242,7 @@ void ardillo_free_TableModelHandler_object(zend_object *object)
     ardillo_ui_TableModelHandler_t *ardillo_s = ARDILLO_GET_OBJECT(ardillo_ui_TableModelHandler_t, object);
 
     ardillo_debug_objects(0, "Freeing TableModelHandler @%p (uis @%p, refcount: %d)\n", ardillo_s, ardillo_s->uis, GC_REFCOUNT(&ardillo_s->std));
-    
+
     ardillo_debug_objects(0, "Refcount for TableModelHandler @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -265,5 +263,3 @@ ZEND_METHOD(Ardillo_TableModelHandler, isValid)
 
     RETURN_BOOL(this->uis != NULL);
 }
-
-

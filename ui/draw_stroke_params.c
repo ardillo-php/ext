@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers DrawStrokeParams_object_handlers;
 
 zend_object* ardillo_create_DrawStrokeParams_object(zend_class_entry *ce)
@@ -36,7 +35,7 @@ void ardillo_free_DrawStrokeParams_object(zend_object *object)
     ardillo_ui_DrawStrokeParams_t *ardillo_s = ARDILLO_GET_OBJECT(ardillo_ui_DrawStrokeParams_t, object);
 
     ardillo_debug_objects(0, "Freeing DrawStrokeParams @%p (uis @%p, refcount: %d)\n", ardillo_s, ardillo_s->uis, GC_REFCOUNT(&ardillo_s->std));
-    
+
     ardillo_debug_objects(0, "Refcount for DrawStrokeParams @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -60,7 +59,7 @@ ZEND_METHOD(Ardillo_DrawStrokeParams, isValid)
 
 ZEND_METHOD(Ardillo_DrawStrokeParams, getCap)
 {
-    
+
     ardillo_ui_DrawStrokeParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawStrokeParams_t, getThis());
     RETURN_LONG((zend_long)this->uis->Cap);
 }
@@ -79,7 +78,7 @@ ZEND_METHOD(Ardillo_DrawStrokeParams, setCap)
 
 ZEND_METHOD(Ardillo_DrawStrokeParams, getJoin)
 {
-    
+
     ardillo_ui_DrawStrokeParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawStrokeParams_t, getThis());
     RETURN_LONG((zend_long)this->uis->Join);
 }
@@ -98,7 +97,7 @@ ZEND_METHOD(Ardillo_DrawStrokeParams, setJoin)
 
 ZEND_METHOD(Ardillo_DrawStrokeParams, getThickness)
 {
-    
+
     ardillo_ui_DrawStrokeParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawStrokeParams_t, getThis());
     RETURN_DOUBLE(this->uis->Thickness);
 }
@@ -117,7 +116,7 @@ ZEND_METHOD(Ardillo_DrawStrokeParams, setThickness)
 
 ZEND_METHOD(Ardillo_DrawStrokeParams, getMiterLimit)
 {
-    
+
     ardillo_ui_DrawStrokeParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawStrokeParams_t, getThis());
     RETURN_DOUBLE(this->uis->MiterLimit);
 }
@@ -136,7 +135,7 @@ ZEND_METHOD(Ardillo_DrawStrokeParams, setMiterLimit)
 
 ZEND_METHOD(Ardillo_DrawStrokeParams, getDashes)
 {
-    
+
     ardillo_ui_DrawStrokeParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawStrokeParams_t, getThis());
     RETURN_DOUBLE(*(this->uis->Dashes));
 }
@@ -155,7 +154,7 @@ ZEND_METHOD(Ardillo_DrawStrokeParams, setDashes)
 
 ZEND_METHOD(Ardillo_DrawStrokeParams, getNumDashes)
 {
-    
+
     ardillo_ui_DrawStrokeParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawStrokeParams_t, getThis());
     RETURN_LONG((zend_long)this->uis->NumDashes);
 }
@@ -174,7 +173,7 @@ ZEND_METHOD(Ardillo_DrawStrokeParams, setNumDashes)
 
 ZEND_METHOD(Ardillo_DrawStrokeParams, getDashPhase)
 {
-    
+
     ardillo_ui_DrawStrokeParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawStrokeParams_t, getThis());
     RETURN_DOUBLE(this->uis->DashPhase);
 }
@@ -190,5 +189,3 @@ ZEND_METHOD(Ardillo_DrawStrokeParams, setDashPhase)
     ardillo_ui_DrawStrokeParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawStrokeParams_t, getThis());
     this->uis->DashPhase = dashPhase;
 }
-
-

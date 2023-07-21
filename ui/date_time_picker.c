@@ -13,7 +13,7 @@ void ardillo_call_DateTimePicker_onChanged(uiDateTimePicker *uis, void *this)
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_DateTimePicker_t *)this)->std, method, &retval, 0, NULL);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -27,7 +27,6 @@ void ardillo_call_DateTimePicker_onChanged(uiDateTimePicker *uis, void *this)
 
     return;
 }
-
 
 zend_object_handlers DateTimePicker_object_handlers;
 
@@ -63,7 +62,7 @@ void ardillo_free_DateTimePicker_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native DateTimePicker @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for DateTimePicker @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -98,27 +97,27 @@ ZEND_METHOD(Ardillo_DateTimePicker, getTime)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_DateTimePicker_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DateTimePicker_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\DateTimePicker::getTime on invalid object");
     }
-    
+
     uiDateTimePickerTime(this->uis, &time);
 
     zval ret;
     char *str;
     size_t str_len;
-    
+
     str_len = spprintf(
         &str, 0, "%04d-%02d-%02d %02d:%02d:%02d",
         time.tm_year + 1900, time.tm_mon + 1, time.tm_mday,
         time.tm_hour, time.tm_min, time.tm_sec
     );
-    
+
     php_date_instantiate(php_date_get_immutable_ce(), &ret);
     php_date_initialize(Z_PHPDATE_P(&ret), str, str_len, "Y-m-d H:i:s", NULL, PHP_DATE_INIT_FORMAT);
     efree(str);
-    
+
     RETVAL_ZVAL(&ret, 0, 0);
 }
 
@@ -131,11 +130,11 @@ ZEND_METHOD(Ardillo_DateTimePicker, setTime)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_DateTimePicker_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DateTimePicker_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\DateTimePicker::setTime on invalid object");
     }
-    
+
     struct tm tm_time = {0};
     php_date_obj *time_dt = php_date_obj_from_obj(Z_OBJ_P(time));
     tm_time.tm_year = time_dt->time->y - 1900;
@@ -155,5 +154,3 @@ ZEND_METHOD(Ardillo_DateTimePicker, onChanged)
 
     RETURN_NULL();
 }
-
-

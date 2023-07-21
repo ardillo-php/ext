@@ -13,7 +13,7 @@ void ardillo_call_MultilineEntry_onChanged(uiMultilineEntry *uis, void *this)
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_MultilineEntry_t *)this)->std, method, &retval, 0, NULL);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -27,7 +27,6 @@ void ardillo_call_MultilineEntry_onChanged(uiMultilineEntry *uis, void *this)
 
     return;
 }
-
 
 zend_object_handlers MultilineEntry_object_handlers;
 
@@ -63,7 +62,7 @@ void ardillo_free_MultilineEntry_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native MultilineEntry @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for MultilineEntry @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -96,11 +95,11 @@ ZEND_METHOD(Ardillo_MultilineEntry, getReadOnly)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_MultilineEntry_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_MultilineEntry_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\MultilineEntry::getReadOnly on invalid object");
     }
-    
+
     int ret = uiMultilineEntryReadOnly(this->uis);
 
     RETURN_BOOL(ret);
@@ -115,11 +114,11 @@ ZEND_METHOD(Ardillo_MultilineEntry, setReadOnly)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_MultilineEntry_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_MultilineEntry_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\MultilineEntry::setReadOnly on invalid object");
     }
-    
+
     uiMultilineEntrySetReadOnly(this->uis, (int)readonly);
 }
 
@@ -128,11 +127,11 @@ ZEND_METHOD(Ardillo_MultilineEntry, getText)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_MultilineEntry_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_MultilineEntry_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\MultilineEntry::getText on invalid object");
     }
-    
+
     char *ret = (char *)uiMultilineEntryText(this->uis);
 
     RETVAL_STRING(ret);
@@ -148,11 +147,11 @@ ZEND_METHOD(Ardillo_MultilineEntry, setText)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_MultilineEntry_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_MultilineEntry_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\MultilineEntry::setText on invalid object");
     }
-    
+
     uiMultilineEntrySetText(this->uis, ZSTR_VAL(text));
 }
 
@@ -172,12 +171,10 @@ ZEND_METHOD(Ardillo_MultilineEntry, append)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_MultilineEntry_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_MultilineEntry_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\MultilineEntry::append on invalid object");
     }
-    
+
     uiMultilineEntryAppend(this->uis, ZSTR_VAL(text));
 }
-
-

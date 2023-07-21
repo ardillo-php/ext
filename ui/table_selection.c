@@ -38,7 +38,7 @@ void ardillo_free_TableSelection_object(zend_object *object)
 
     ardillo_debug_objects(0, "Freeing native TableSelection @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
     uiFreeTableSelection(ardillo_s->uis);
-    
+
     ardillo_debug_objects(0, "Refcount for TableSelection @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -55,17 +55,16 @@ ZEND_METHOD(Ardillo_TableSelection, isValid)
     RETURN_BOOL(this->uis != NULL);
 }
 
-
 ZEND_METHOD(Ardillo_TableSelection, __construct)
 {
-    
+
     ardillo_ui_TableSelection_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_TableSelection_t, getThis());
     this->uis = (uiTableSelection *)ecalloc(1, sizeof(uiTableSelection));
 }
 
 ZEND_METHOD(Ardillo_TableSelection, getNumRows)
 {
-    
+
     ardillo_ui_TableSelection_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_TableSelection_t, getThis());
     RETURN_LONG((zend_long)this->uis->NumRows);
 }
@@ -84,16 +83,16 @@ ZEND_METHOD(Ardillo_TableSelection, setNumRows)
 
 ZEND_METHOD(Ardillo_TableSelection, getRows)
 {
-    
+
     ardillo_ui_TableSelection_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_TableSelection_t, getThis());
-    
+
     zval rows;
     array_init_size(&rows, this->uis->NumRows);
-    
+
     for (size_t i = 0; i < this->uis->NumRows; i++) {
         add_next_index_long(&rows, this->uis->Rows[i]);
     }
-    
+
     RETVAL_ZVAL(&rows, 0, 0);
 }
 
@@ -109,12 +108,10 @@ ZEND_METHOD(Ardillo_TableSelection, setRows)
     zval *val;
     this->uis->Rows = (int *)ecalloc(Z_ARRVAL_P(rows)->nNumOfElements, sizeof(int));
     int i = 0;
-    
+
     ZEND_HASH_FOREACH_VAL(Z_ARRVAL_P(rows), val) {
         if (Z_TYPE_P(val) == IS_LONG) {
             this->uis->Rows[i++] = Z_LVAL_P(val);
         }
     } ZEND_HASH_FOREACH_END();
 }
-
-

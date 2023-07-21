@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers ProgressBar_object_handlers;
 
 zend_object* ardillo_create_ProgressBar_object(zend_class_entry *ce)
@@ -41,7 +40,7 @@ void ardillo_free_ProgressBar_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native ProgressBar @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for ProgressBar @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -73,11 +72,11 @@ ZEND_METHOD(Ardillo_ProgressBar, getValue)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_ProgressBar_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_ProgressBar_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\ProgressBar::getValue on invalid object");
     }
-    
+
     int ret = uiProgressBarValue(this->uis);
 
     RETURN_LONG(ret);
@@ -92,12 +91,10 @@ ZEND_METHOD(Ardillo_ProgressBar, setValue)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_ProgressBar_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_ProgressBar_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\ProgressBar::setValue on invalid object");
     }
-    
+
     uiProgressBarSetValue(this->uis, (int)n);
 }
-
-

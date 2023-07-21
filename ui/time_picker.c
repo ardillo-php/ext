@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers TimePicker_object_handlers;
 
 zend_object* ardillo_create_TimePicker_object(zend_class_entry *ce)
@@ -41,7 +40,7 @@ void ardillo_free_TimePicker_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native TimePicker @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for TimePicker @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -67,5 +66,3 @@ ZEND_METHOD(Ardillo_TimePicker, __construct)
     ardillo_debug_objects(0, "Constructing TimePicker @%p (uis @ %p)\n", this, this->uis);
     uiControlOnFree(uiControl(this->uis), ardillo_call_Control_onFree, this);
 }
-
-

@@ -13,7 +13,7 @@ void ardillo_call_ColorButton_onChanged(uiColorButton *uis, void *this)
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_ColorButton_t *)this)->std, method, &retval, 0, NULL);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -27,7 +27,6 @@ void ardillo_call_ColorButton_onChanged(uiColorButton *uis, void *this)
 
     return;
 }
-
 
 zend_object_handlers ColorButton_object_handlers;
 
@@ -63,7 +62,7 @@ void ardillo_free_ColorButton_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native ColorButton @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for ColorButton @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -98,11 +97,11 @@ ZEND_METHOD(Ardillo_ColorButton, getColor)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_ColorButton_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_ColorButton_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\ColorButton::getColor on invalid object");
     }
-    
+
     uiColorButtonColor(this->uis, &color_r, &color_g, &color_b, &color_a);
 
     zval color;
@@ -123,11 +122,11 @@ ZEND_METHOD(Ardillo_ColorButton, setColor)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_ColorButton_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_ColorButton_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\ColorButton::setColor on invalid object");
     }
-    
+
     zval *color_r, *color_g, *color_b, *color_a, rv;
     color_r = zend_read_property(ce_Ardillo_Color, Z_OBJ_P(color), "red", sizeof("red") - 1, 0, &rv);
     ZVAL_DEREF(color_r);
@@ -147,5 +146,3 @@ ZEND_METHOD(Ardillo_ColorButton, onChanged)
 
     RETURN_NULL();
 }
-
-

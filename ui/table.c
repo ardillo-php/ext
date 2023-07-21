@@ -15,7 +15,7 @@ void ardillo_call_Table_onHeaderClicked(uiTable *uis, int column, void *this)
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_Table_t *)this)->std, method, &retval, 1, args);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -41,7 +41,7 @@ void ardillo_call_Table_onRowClicked(uiTable *uis, int row, void *this)
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_Table_t *)this)->std, method, &retval, 1, args);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -67,7 +67,7 @@ void ardillo_call_Table_onRowDoubleClicked(uiTable *uis, int row, void *this)
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_Table_t *)this)->std, method, &retval, 1, args);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -83,7 +83,6 @@ void ardillo_call_Table_onRowDoubleClicked(uiTable *uis, int row, void *this)
 
     return;
 }
-
 
 zend_object_handlers Table_object_handlers;
 
@@ -119,7 +118,7 @@ void ardillo_free_Table_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native Table @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for Table @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -231,11 +230,11 @@ ZEND_METHOD(Ardillo_Table, getColumnWidth)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Table_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Table_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Table::getColumnWidth on invalid object");
     }
-    
+
     int ret = uiTableColumnWidth(this->uis, (int)column);
 
     RETURN_LONG(ret);
@@ -252,11 +251,11 @@ ZEND_METHOD(Ardillo_Table, setColumnWidth)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Table_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Table_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Table::setColumnWidth on invalid object");
     }
-    
+
     uiTableColumnSetWidth(this->uis, (int)column, (int)width);
 }
 
@@ -269,11 +268,11 @@ ZEND_METHOD(Ardillo_Table, getHeaderSortIndicator)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Table_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Table_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Table::getHeaderSortIndicator on invalid object");
     }
-    
+
     int ret = uiTableHeaderSortIndicator(this->uis, (int)column);
 
     RETURN_LONG(ret);
@@ -290,11 +289,11 @@ ZEND_METHOD(Ardillo_Table, setHeaderSortIndicator)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Table_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Table_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Table::setHeaderSortIndicator on invalid object");
     }
-    
+
     uiTableHeaderSetSortIndicator(this->uis, (int)column, (int)indicator);
 }
 
@@ -303,11 +302,11 @@ ZEND_METHOD(Ardillo_Table, getHeaderVisible)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Table_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Table_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Table::getHeaderVisible on invalid object");
     }
-    
+
     int ret = uiTableHeaderVisible(this->uis);
 
     RETURN_BOOL(ret);
@@ -322,11 +321,11 @@ ZEND_METHOD(Ardillo_Table, setHeaderVisible)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Table_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Table_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Table::setHeaderVisible on invalid object");
     }
-    
+
     uiTableHeaderSetVisible(this->uis, (int)visible);
 }
 
@@ -335,11 +334,11 @@ ZEND_METHOD(Ardillo_Table, getSelectionMode)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Table_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Table_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Table::getSelectionMode on invalid object");
     }
-    
+
     int ret = uiTableGetSelectionMode(this->uis);
 
     RETURN_LONG(ret);
@@ -354,11 +353,11 @@ ZEND_METHOD(Ardillo_Table, setSelectionMode)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Table_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Table_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Table::setSelectionMode on invalid object");
     }
-    
+
     uiTableSetSelectionMode(this->uis, (int)mode);
 }
 
@@ -408,11 +407,11 @@ ZEND_METHOD(Ardillo_Table, appendButtonColumn)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Table_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Table_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Table::appendButtonColumn on invalid object");
     }
-    
+
     uiTableAppendButtonColumn(this->uis, ZSTR_VAL(name), (int)buttonModelColumn, (int)buttonClickableModelColumn);
 }
 
@@ -429,11 +428,11 @@ ZEND_METHOD(Ardillo_Table, appendCheckboxColumn)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Table_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Table_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Table::appendCheckboxColumn on invalid object");
     }
-    
+
     uiTableAppendCheckboxColumn(this->uis, ZSTR_VAL(name), (int)checkboxModelColumn, (int)checkboxEditableModelColumn);
 }
 
@@ -456,11 +455,11 @@ ZEND_METHOD(Ardillo_Table, appendCheckboxTextColumn)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Table_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Table_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Table::appendCheckboxTextColumn on invalid object");
     }
-    
+
     uiTableAppendCheckboxTextColumn(this->uis, ZSTR_VAL(name), (int)checkboxModelColumn, (int)checkboxEditableModelColumn, (int)textModelColumn, (int)textEditableModelColumn, ARDILLO_ZVAL_GET_UIS_OR_NULL(ardillo_ui_TableTextColumnOptionalParams_t, textParams));
 }
 
@@ -475,11 +474,11 @@ ZEND_METHOD(Ardillo_Table, appendImageColumn)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Table_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Table_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Table::appendImageColumn on invalid object");
     }
-    
+
     uiTableAppendImageColumn(this->uis, ZSTR_VAL(name), (int)imageModelColumn);
 }
 
@@ -500,11 +499,11 @@ ZEND_METHOD(Ardillo_Table, appendImageTextColumn)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Table_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Table_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Table::appendImageTextColumn on invalid object");
     }
-    
+
     uiTableAppendImageTextColumn(this->uis, ZSTR_VAL(name), (int)imageModelColumn, (int)textModelColumn, (int)textEditableModelColumn, ARDILLO_ZVAL_GET_UIS_OR_NULL(ardillo_ui_TableTextColumnOptionalParams_t, textParams));
 }
 
@@ -519,11 +518,11 @@ ZEND_METHOD(Ardillo_Table, appendProgressBarColumn)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Table_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Table_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Table::appendProgressBarColumn on invalid object");
     }
-    
+
     uiTableAppendProgressBarColumn(this->uis, ZSTR_VAL(name), (int)progressModelColumn);
 }
 
@@ -542,12 +541,10 @@ ZEND_METHOD(Ardillo_Table, appendTextColumn)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Table_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Table_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Table::appendTextColumn on invalid object");
     }
-    
+
     uiTableAppendTextColumn(this->uis, ZSTR_VAL(name), (int)textModelColumn, (int)textEditableModelColumn, ARDILLO_ZVAL_GET_UIS_OR_NULL(ardillo_ui_TableTextColumnOptionalParams_t, textParams));
 }
-
-

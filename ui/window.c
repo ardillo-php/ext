@@ -39,7 +39,7 @@ void ardillo_call_Window_onContentSizeChanged(uiWindow *uis, void *this)
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_Window_t *)this)->std, method, &retval, 0, NULL);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -61,7 +61,7 @@ void ardillo_call_Window_onFocusChanged(uiWindow *uis, void *this)
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_Window_t *)this)->std, method, &retval, 0, NULL);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -83,7 +83,7 @@ void ardillo_call_Window_onPositionChanged(uiWindow *uis, void *this)
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_Window_t *)this)->std, method, &retval, 0, NULL);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -97,7 +97,6 @@ void ardillo_call_Window_onPositionChanged(uiWindow *uis, void *this)
 
     return;
 }
-
 
 zend_object_handlers Window_object_handlers;
 
@@ -119,7 +118,6 @@ zend_object* ardillo_create_Window_object(zend_class_entry *ce)
         return NULL;
     }
 
-
     zval app;
     ZVAL_OBJ(&app, &ardillo_default_app->std);
     zend_update_property(ce, &ardillo_s->std, "app", sizeof("app") - 1, &app);
@@ -139,7 +137,7 @@ void ardillo_free_Window_object(zend_object *object)
         ardillo_debug_objects(0, "Destroying native Window @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlDestroy(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for Window @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -169,7 +167,7 @@ ZEND_METHOD(Ardillo_Window, __construct)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     zval *size_width, *size_height, size_rv;
     size_width = zend_read_property(ce_Ardillo_Size, Z_OBJ_P(size), "width", sizeof("width") - 1, 0, &size_rv);
     ZVAL_DEREF(size_width);
@@ -190,11 +188,11 @@ ZEND_METHOD(Ardillo_Window, getBorderless)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::getBorderless on invalid object");
     }
-    
+
     int ret = uiWindowBorderless(this->uis);
 
     RETURN_BOOL(ret);
@@ -209,11 +207,11 @@ ZEND_METHOD(Ardillo_Window, setBorderless)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::setBorderless on invalid object");
     }
-    
+
     uiWindowSetBorderless(this->uis, (int)borderless);
 }
 
@@ -224,11 +222,11 @@ ZEND_METHOD(Ardillo_Window, getContentSize)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::getContentSize on invalid object");
     }
-    
+
     uiWindowContentSize(this->uis, &size_width, &size_height);
 
     zval size;
@@ -247,11 +245,11 @@ ZEND_METHOD(Ardillo_Window, setContentSize)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::setContentSize on invalid object");
     }
-    
+
     zval *size_width, *size_height, size_rv;
     size_width = zend_read_property(ce_Ardillo_Size, Z_OBJ_P(size), "width", sizeof("width") - 1, 0, &size_rv);
     ZVAL_DEREF(size_width);
@@ -266,11 +264,11 @@ ZEND_METHOD(Ardillo_Window, getFullscreen)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::getFullscreen on invalid object");
     }
-    
+
     int ret = uiWindowFullscreen(this->uis);
 
     RETURN_BOOL(ret);
@@ -285,11 +283,11 @@ ZEND_METHOD(Ardillo_Window, setFullscreen)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::setFullscreen on invalid object");
     }
-    
+
     uiWindowSetFullscreen(this->uis, (int)fullscreen);
 }
 
@@ -298,11 +296,11 @@ ZEND_METHOD(Ardillo_Window, getMargined)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::getMargined on invalid object");
     }
-    
+
     int ret = uiWindowMargined(this->uis);
 
     RETURN_BOOL(ret);
@@ -317,11 +315,11 @@ ZEND_METHOD(Ardillo_Window, setMargined)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::setMargined on invalid object");
     }
-    
+
     uiWindowSetMargined(this->uis, (int)margined);
 }
 
@@ -332,11 +330,11 @@ ZEND_METHOD(Ardillo_Window, getPosition)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::getPosition on invalid object");
     }
-    
+
     uiWindowPosition(this->uis, &coord_x, &coord_y);
 
     zval coord;
@@ -355,11 +353,11 @@ ZEND_METHOD(Ardillo_Window, setPosition)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::setPosition on invalid object");
     }
-    
+
     zval *pos_x, *pos_y, pos_rv;
     pos_x = zend_read_property(ce_Ardillo_Point, Z_OBJ_P(pos), "x", sizeof("x") - 1, 0, &pos_rv);
     ZVAL_DEREF(pos_x);
@@ -374,11 +372,11 @@ ZEND_METHOD(Ardillo_Window, getResizeable)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::getResizeable on invalid object");
     }
-    
+
     int ret = uiWindowResizeable(this->uis);
 
     RETURN_BOOL(ret);
@@ -393,11 +391,11 @@ ZEND_METHOD(Ardillo_Window, setResizeable)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::setResizeable on invalid object");
     }
-    
+
     uiWindowSetResizeable(this->uis, (int)resizeable);
 }
 
@@ -406,11 +404,11 @@ ZEND_METHOD(Ardillo_Window, getTitle)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::getTitle on invalid object");
     }
-    
+
     char *ret = (char *)uiWindowTitle(this->uis);
 
     RETVAL_STRING(ret);
@@ -426,11 +424,11 @@ ZEND_METHOD(Ardillo_Window, setTitle)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::setTitle on invalid object");
     }
-    
+
     uiWindowSetTitle(this->uis, ZSTR_VAL(title));
 }
 
@@ -467,11 +465,11 @@ ZEND_METHOD(Ardillo_Window, isFocused)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::focused on invalid object");
     }
-    
+
     int ret = uiWindowFocused(this->uis);
 
     RETURN_BOOL(ret);
@@ -486,14 +484,13 @@ ZEND_METHOD(Ardillo_Window, setChild)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_Window_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_Window_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\Window::setChild on invalid object");
     }
-    
+
     uiWindowSetChild(this->uis, ARDILLO_ZVAL_GET_UIS(ardillo_ui_Control_t, child));
 }
-
 
 ZEND_METHOD(Ardillo_Window, messageBox)
 {

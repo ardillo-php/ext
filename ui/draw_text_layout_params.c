@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers DrawTextLayoutParams_object_handlers;
 
 zend_object* ardillo_create_DrawTextLayoutParams_object(zend_class_entry *ce)
@@ -36,7 +35,7 @@ void ardillo_free_DrawTextLayoutParams_object(zend_object *object)
     ardillo_ui_DrawTextLayoutParams_t *ardillo_s = ARDILLO_GET_OBJECT(ardillo_ui_DrawTextLayoutParams_t, object);
 
     ardillo_debug_objects(0, "Freeing DrawTextLayoutParams @%p (uis @%p, refcount: %d)\n", ardillo_s, ardillo_s->uis, GC_REFCOUNT(&ardillo_s->std));
-    
+
     ardillo_debug_objects(0, "Refcount for DrawTextLayoutParams @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -55,7 +54,7 @@ ZEND_METHOD(Ardillo_DrawTextLayoutParams, isValid)
 
 ZEND_METHOD(Ardillo_DrawTextLayoutParams, getDefaultFont)
 {
-    
+
     ardillo_ui_DrawTextLayoutParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawTextLayoutParams_t, getThis());
     ardillo_ui_FontDescriptor_t *obj = (ardillo_ui_FontDescriptor_t *)this->uis->DefaultFont;
     zval ret;
@@ -78,7 +77,7 @@ ZEND_METHOD(Ardillo_DrawTextLayoutParams, setDefaultFont)
 
 ZEND_METHOD(Ardillo_DrawTextLayoutParams, getWidth)
 {
-    
+
     ardillo_ui_DrawTextLayoutParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawTextLayoutParams_t, getThis());
     RETURN_DOUBLE(this->uis->Width);
 }
@@ -97,7 +96,7 @@ ZEND_METHOD(Ardillo_DrawTextLayoutParams, setWidth)
 
 ZEND_METHOD(Ardillo_DrawTextLayoutParams, getAlign)
 {
-    
+
     ardillo_ui_DrawTextLayoutParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawTextLayoutParams_t, getThis());
     RETURN_LONG((zend_long)this->uis->Align);
 }
@@ -113,5 +112,3 @@ ZEND_METHOD(Ardillo_DrawTextLayoutParams, setAlign)
     ardillo_ui_DrawTextLayoutParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_DrawTextLayoutParams_t, getThis());
     this->uis->Align = align;
 }
-
-

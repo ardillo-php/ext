@@ -116,16 +116,10 @@ PHP_MINIT_FUNCTION(ardillo)
         return FAILURE;
     }
 
-
-
-    /*** Core ***/
-
     PHP_MINIT(Ardillo_App)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(Ardillo_Menu)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(Ardillo_Task)(INIT_FUNC_ARGS_PASSTHRU);
     PHP_MINIT(Ardillo_StreamEventHandler)(INIT_FUNC_ARGS_PASSTHRU);
-
-    /*** UI ***/
 
     ce_Ardillo_Align = register_class_Ardillo_Align();
     ce_Ardillo_At = register_class_Ardillo_At();

@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers TableTextColumnOptionalParams_object_handlers;
 
 zend_object* ardillo_create_TableTextColumnOptionalParams_object(zend_class_entry *ce)
@@ -36,7 +35,7 @@ void ardillo_free_TableTextColumnOptionalParams_object(zend_object *object)
     ardillo_ui_TableTextColumnOptionalParams_t *ardillo_s = ARDILLO_GET_OBJECT(ardillo_ui_TableTextColumnOptionalParams_t, object);
 
     ardillo_debug_objects(0, "Freeing TableTextColumnOptionalParams @%p (uis @%p, refcount: %d)\n", ardillo_s, ardillo_s->uis, GC_REFCOUNT(&ardillo_s->std));
-    
+
     ardillo_debug_objects(0, "Refcount for TableTextColumnOptionalParams @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -60,7 +59,7 @@ ZEND_METHOD(Ardillo_TableTextColumnOptionalParams, isValid)
 
 ZEND_METHOD(Ardillo_TableTextColumnOptionalParams, getColorModelColumn)
 {
-    
+
     ardillo_ui_TableTextColumnOptionalParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_TableTextColumnOptionalParams_t, getThis());
     RETURN_LONG((zend_long)this->uis->ColorModelColumn);
 }
@@ -76,5 +75,3 @@ ZEND_METHOD(Ardillo_TableTextColumnOptionalParams, setColorModelColumn)
     ardillo_ui_TableTextColumnOptionalParams_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_TableTextColumnOptionalParams_t, getThis());
     this->uis->ColorModelColumn = colorModelColumn;
 }
-
-

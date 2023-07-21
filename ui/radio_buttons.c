@@ -13,7 +13,7 @@ void ardillo_call_RadioButtons_onSelected(uiRadioButtons *uis, void *this)
 
     int successful = zend_call_method_if_exists(&((ardillo_ui_RadioButtons_t *)this)->std, method, &retval, 0, NULL);
     zend_string_release(method);
-    
+
     zval_ptr_dtor(&retval);
 
     if (successful != SUCCESS) {
@@ -27,7 +27,6 @@ void ardillo_call_RadioButtons_onSelected(uiRadioButtons *uis, void *this)
 
     return;
 }
-
 
 zend_object_handlers RadioButtons_object_handlers;
 
@@ -63,7 +62,7 @@ void ardillo_free_RadioButtons_object(zend_object *object)
         ardillo_debug_objects(0, "Hiding native RadioButtons @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
         uiControlHide(uiControl(ardillo_s->uis));
     }
-    
+
     ardillo_debug_objects(0, "Refcount for RadioButtons @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -96,11 +95,11 @@ ZEND_METHOD(Ardillo_RadioButtons, getSelected)
     ZEND_PARSE_PARAMETERS_NONE();
 
     ardillo_ui_RadioButtons_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_RadioButtons_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\RadioButtons::getSelected on invalid object");
     }
-    
+
     int ret = uiRadioButtonsSelected(this->uis);
 
     RETURN_LONG(ret);
@@ -115,11 +114,11 @@ ZEND_METHOD(Ardillo_RadioButtons, setSelected)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_RadioButtons_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_RadioButtons_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\RadioButtons::setSelected on invalid object");
     }
-    
+
     uiRadioButtonsSetSelected(this->uis, (int)index);
 }
 
@@ -139,12 +138,10 @@ ZEND_METHOD(Ardillo_RadioButtons, append)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_RadioButtons_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_RadioButtons_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\RadioButtons::append on invalid object");
     }
-    
+
     uiRadioButtonsAppend(this->uis, ZSTR_VAL(text));
 }
-
-

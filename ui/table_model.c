@@ -6,7 +6,6 @@
 #include "util/common.h"
 #include "util/debug.h"
 
-
 zend_object_handlers TableModel_object_handlers;
 
 zend_object* ardillo_create_TableModel_object(zend_class_entry *ce)
@@ -27,7 +26,6 @@ zend_object* ardillo_create_TableModel_object(zend_class_entry *ce)
         return NULL;
     }
 
-
     zval app;
     ZVAL_OBJ(&app, &ardillo_default_app->std);
     zend_update_property(ce, &ardillo_s->std, "app", sizeof("app") - 1, &app);
@@ -45,7 +43,7 @@ void ardillo_free_TableModel_object(zend_object *object)
 
     ardillo_debug_objects(0, "Freeing native TableModel @%p (uis @%p, object @%p)\n", ardillo_s, ardillo_s->uis, &ardillo_s->std);
     uiFreeTableModel(ardillo_s->uis);
-    
+
     ardillo_debug_objects(0, "Refcount for TableModel @%p before dtor: %d\n", ardillo_s, GC_REFCOUNT(&ardillo_s->std));
 
     zend_object_std_dtor(&ardillo_s->std);
@@ -85,11 +83,11 @@ ZEND_METHOD(Ardillo_TableModel, rowChanged)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_TableModel_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_TableModel_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\TableModel::rowChanged on invalid object");
     }
-    
+
     uiTableModelRowChanged(this->uis, (int)index);
 }
 
@@ -102,11 +100,11 @@ ZEND_METHOD(Ardillo_TableModel, rowDeleted)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_TableModel_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_TableModel_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\TableModel::rowDeleted on invalid object");
     }
-    
+
     uiTableModelRowDeleted(this->uis, (int)oldIndex);
 }
 
@@ -119,12 +117,10 @@ ZEND_METHOD(Ardillo_TableModel, rowInserted)
     ZEND_PARSE_PARAMETERS_END_EX(RETURN_THROWS());
 
     ardillo_ui_TableModel_t *this = ARDILLO_ZVAL_GET_OBJECT(ardillo_ui_TableModel_t, getThis());
-    
+
     if (!this->uis) {
         zend_error(E_CORE_ERROR, "Cannot invoke Ardillo\\TableModel::rowInserted on invalid object");
     }
-    
+
     uiTableModelRowInserted(this->uis, (int)newIndex);
 }
-
-
