@@ -13,6 +13,12 @@ PHP_ARG_ENABLE(ardillo-objects-debug, whether to enable object debugging support
 PHP_ARG_ENABLE(ardillo-reference-debug, whether to enable object reference debugging support in Ardillo,
 [ --enable-ardillo-reference-debug Enable object reference debugging support in Ardillo], no, no)
 
+AC_CHECK_PROG(MESON_CHECK, meson, yes)
+AS_IF([test x"$MESON_CHECK" != x"yes"], [AC_MSG_ERROR([Please install meson before configuring Ardillo])])
+
+AC_CHECK_PROG(NINJA_CHECK, ninja, yes)
+AS_IF([test x"$NINJA_CHECK" != x"yes"], [AC_MSG_ERROR([Please install ninja before configuring Ardillo])])
+
 if test "$PHP_ARDILLO_DEBUG" != "no"; then
     AC_DEFINE(CONFIG_ARDILLO_DEBUG, 1, [Include debugging support in Ardillo])
 
