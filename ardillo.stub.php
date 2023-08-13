@@ -354,26 +354,6 @@ class TextStretch
 }
 
 /**
- * Ardillo TextStretch parameter constants
- */
-class TextStretch
-{
-    /** @var int */ public const Minimum = 0;
-    /** @var int */ public const Thin = 100;
-    /** @var int */ public const UltraLight = 200;
-    /** @var int */ public const Light = 300;
-    /** @var int */ public const Book = 350;
-    /** @var int */ public const Normal = 400;
-    /** @var int */ public const Medium = 500;
-    /** @var int */ public const SemiBold = 600;
-    /** @var int */ public const Bold = 700;
-    /** @var int */ public const UltraBold = 800;
-    /** @var int */ public const Heavy = 900;
-    /** @var int */ public const UltraHeavy = 950;
-    /** @var int */ public const Maximum = 1000;
-}
-
-/**
  * Ardillo Color base class
  */
 class Color
@@ -1755,7 +1735,7 @@ class Image
     /**
      * Appends a binary representation of the image
      *
-     * @param array<Color> $pixels Array of image representation pixels (as Color objects)
+     * @param list<Color> $pixels Array of image representation pixels (as Color objects)
      * @param Size $size Size of the image representation
      */
     public function append(array $pixels, Size $size): void {}

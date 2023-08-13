@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: ddba8b680a2b9cb19f4397425ff4e7ab7e88918d */
+ * Stub hash: c9f5556122b49ae00ba60d1eefc0c3c6a6c4e3b4 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Ardillo_App_get, 0, 0, Ardillo\\App, 1)
 ZEND_END_ARG_INFO()
@@ -92,9 +92,6 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_AreaDrawParams_tra
 	ZEND_ARG_OBJ_INFO(0, matrix, Ardillo\\DrawMatrix, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_AreaHandler_isValid, 0, 0, _IS_BOOL, 0)
-ZEND_END_ARG_INFO()
-
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_AreaHandler_dragBrokenHandler, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, area, Ardillo\\Area, 0)
 ZEND_END_ARG_INFO()
@@ -145,7 +142,8 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_AreaMouseEvent_getHeld1To64 arginfo_class_Ardillo_AreaKeyEvent_getKey
 
-#define arginfo_class_Ardillo_Box_getPadded arginfo_class_Ardillo_AreaHandler_isValid
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Box_getPadded, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Box_setPadded, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, padded, _IS_BOOL, 0)
@@ -166,7 +164,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Ardillo_Button___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_Button_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Button_isValid arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Button_getText, 0, 0, IS_STRING, 0)
 ZEND_END_ARG_INFO()
@@ -179,9 +177,9 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_Checkbox___construct arginfo_class_Ardillo_Button___construct
 
-#define arginfo_class_Ardillo_Checkbox_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Checkbox_isValid arginfo_class_Ardillo_Box_getPadded
 
-#define arginfo_class_Ardillo_Checkbox_getChecked arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Checkbox_getChecked arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Checkbox_setChecked, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, checked, _IS_BOOL, 0)
@@ -196,7 +194,7 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Ardillo_ColorButton___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_ColorButton_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_ColorButton_isValid arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Ardillo_ColorButton_getColor, 0, 0, Ardillo\\Color, 0)
 ZEND_END_ARG_INFO()
@@ -209,7 +207,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_Combobox___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_Combobox_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Combobox_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_Combobox_getSelected arginfo_class_Ardillo_AreaKeyEvent_getKey
 
@@ -234,21 +232,21 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_Control_enable arginfo_class_Ardillo_App_run
 
-#define arginfo_class_Ardillo_Control_isEnabled arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Control_isEnabled arginfo_class_Ardillo_Box_getPadded
 
-#define arginfo_class_Ardillo_Control_isEnabledToUser arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Control_isEnabledToUser arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_Control_hide arginfo_class_Ardillo_App_run
 
 #define arginfo_class_Ardillo_Control_show arginfo_class_Ardillo_App_run
 
-#define arginfo_class_Ardillo_Control_isTopLevel arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Control_isTopLevel arginfo_class_Ardillo_Box_getPadded
 
-#define arginfo_class_Ardillo_Control_isVisible arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Control_isVisible arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_DateTimePicker___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_DateTimePicker_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_DateTimePicker_isValid arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Ardillo_DateTimePicker_getTime, 0, 0, DateTimeImmutable, 0)
 ZEND_END_ARG_INFO()
@@ -259,7 +257,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_DateTimePicker_onChanged arginfo_class_Ardillo_App_run
 
-#define arginfo_class_Ardillo_DrawBrush_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_DrawBrush_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_DrawBrush_getType arginfo_class_Ardillo_AreaKeyEvent_getKey
 
@@ -311,7 +309,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_DrawBrushGradientStop_setColor arginfo_class_Ardillo_ColorButton_setColor
 
-#define arginfo_class_Ardillo_DrawMatrix_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_DrawMatrix_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_DrawMatrix_setIdentity arginfo_class_Ardillo_App_run
 
@@ -320,7 +318,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_DrawMatrix_transla
 	ZEND_ARG_TYPE_INFO(0, y, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_DrawStrokeParams_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_DrawStrokeParams_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_DrawStrokeParams_getCap arginfo_class_Ardillo_AreaKeyEvent_getKey
 
@@ -385,7 +383,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_EditableCombobox___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_EditableCombobox_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_EditableCombobox_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_EditableCombobox_getText arginfo_class_Ardillo_Button_getText
 
@@ -397,9 +395,9 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_Entry___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_Entry_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Entry_isValid arginfo_class_Ardillo_Box_getPadded
 
-#define arginfo_class_Ardillo_Entry_getReadOnly arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Entry_getReadOnly arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Entry_setReadOnly, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, readonly, _IS_BOOL, 0)
@@ -413,13 +411,11 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_FontButton___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_FontButton_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_FontButton_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_FontButton_onChanged arginfo_class_Ardillo_App_run
 
 #define arginfo_class_Ardillo_FontButton_getFont arginfo_class_Ardillo_DrawTextLayoutParams_getDefaultFont
-
-#define arginfo_class_Ardillo_FontDescriptor_isValid arginfo_class_Ardillo_AreaHandler_isValid
 
 #define arginfo_class_Ardillo_FontDescriptor_getFamily arginfo_class_Ardillo_Button_getText
 
@@ -453,9 +449,9 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_Form___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_Form_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Form_isValid arginfo_class_Ardillo_Box_getPadded
 
-#define arginfo_class_Ardillo_Form_getPadded arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Form_getPadded arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_Form_setPadded arginfo_class_Ardillo_Box_setPadded
 
@@ -471,9 +467,9 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_Grid___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_Grid_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Grid_isValid arginfo_class_Ardillo_Box_getPadded
 
-#define arginfo_class_Ardillo_Grid_getPadded arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Grid_getPadded arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_Grid_setPadded arginfo_class_Ardillo_Box_setPadded
 
@@ -505,9 +501,9 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Ardillo_Group___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, title, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_Group_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Group_isValid arginfo_class_Ardillo_Box_getPadded
 
-#define arginfo_class_Ardillo_Group_getMargined arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Group_getMargined arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Group_setMargined, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, margined, _IS_BOOL, 0)
@@ -528,7 +524,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Ardillo_Image___construct, 0, 0, 2)
 	ZEND_ARG_TYPE_INFO(0, height, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_Image_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Image_isValid arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Image_append, 0, 2, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, pixels, IS_ARRAY, 0)
@@ -537,7 +533,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_Label___construct arginfo_class_Ardillo_Button___construct
 
-#define arginfo_class_Ardillo_Label_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Label_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_Label_getText arginfo_class_Ardillo_Button_getText
 
@@ -545,9 +541,9 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_MultilineEntry___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_MultilineEntry_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_MultilineEntry_isValid arginfo_class_Ardillo_Box_getPadded
 
-#define arginfo_class_Ardillo_MultilineEntry_getReadOnly arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_MultilineEntry_getReadOnly arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_MultilineEntry_setReadOnly arginfo_class_Ardillo_Entry_setReadOnly
 
@@ -561,7 +557,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_ProgressBar___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_ProgressBar_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_ProgressBar_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_ProgressBar_getValue arginfo_class_Ardillo_AreaKeyEvent_getKey
 
@@ -571,7 +567,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_RadioButtons___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_RadioButtons_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_RadioButtons_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_RadioButtons_getSelected arginfo_class_Ardillo_AreaKeyEvent_getKey
 
@@ -586,9 +582,9 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Ardillo_Slider___construct, 0, 0, 2)
 	ZEND_ARG_TYPE_INFO(0, max, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_Slider_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Slider_isValid arginfo_class_Ardillo_Box_getPadded
 
-#define arginfo_class_Ardillo_Slider_getHasToolTip arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Slider_getHasToolTip arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Slider_setHasToolTip, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, hasToolTip, _IS_BOOL, 0)
@@ -611,7 +607,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_Spinbox___construct arginfo_class_Ardillo_Slider___construct
 
-#define arginfo_class_Ardillo_Spinbox_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Spinbox_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_Spinbox_getValue arginfo_class_Ardillo_AreaKeyEvent_getKey
 
@@ -621,7 +617,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_Tab___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_Tab_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Tab_isValid arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Tab_getMargined, 0, 1, _IS_BOOL, 0)
 	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
@@ -651,7 +647,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Ardillo_Table___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, params, Ardillo\\TableParams, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_Table_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Table_isValid arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Table_getColumnWidth, 0, 1, IS_LONG, 0)
 	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
@@ -669,7 +665,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Table_setHeaderSor
 	ZEND_ARG_TYPE_INFO(0, indicator, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_Table_getHeaderVisible arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Table_getHeaderVisible arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Table_setHeaderVisible, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, visible, _IS_BOOL, 0)
@@ -747,7 +743,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Ardillo_TableModel___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, mh, Ardillo\\TableModelHandler, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_TableModel_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_TableModel_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_TableModel_rowChanged arginfo_class_Ardillo_Box_delete
 
@@ -759,7 +755,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_TableModel_rowInse
 	ZEND_ARG_TYPE_INFO(0, newIndex, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_TableModelHandler_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_TableModelHandler_isValid arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Ardillo_TableModelHandler_cellValueHandler, 0, 3, Ardillo\\TableValue, 0)
 	ZEND_ARG_OBJ_INFO(0, m, Ardillo\\TableModel, 0)
@@ -785,7 +781,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_TableModelHandler_
 	ZEND_ARG_OBJ_INFO(0, value, Ardillo\\TableValue, 1)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_TableParams_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_TableParams_isValid arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Ardillo_TableParams_getModel, 0, 0, Ardillo\\TableModel, 0)
 ZEND_END_ARG_INFO()
@@ -800,7 +796,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_TableParams_setRow
 	ZEND_ARG_TYPE_INFO(0, rowBackgroundColorModelColumn, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_TableTextColumnOptionalParams_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_TableTextColumnOptionalParams_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_TableTextColumnOptionalParams_getColorModelColumn arginfo_class_Ardillo_AreaKeyEvent_getKey
 
@@ -816,9 +812,9 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Ardillo_Window___construct, 0, 0, 3)
 	ZEND_ARG_TYPE_INFO(0, hasMenubar, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_Window_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Window_isValid arginfo_class_Ardillo_Box_getPadded
 
-#define arginfo_class_Ardillo_Window_getBorderless arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Window_getBorderless arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Window_setBorderless, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, borderless, _IS_BOOL, 0)
@@ -830,13 +826,13 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Window_setContentS
 	ZEND_ARG_OBJ_INFO(0, size, Ardillo\\Size, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_Window_getFullscreen arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Window_getFullscreen arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Window_setFullscreen, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, fullscreen, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_Window_getMargined arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Window_getMargined arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_Window_setMargined arginfo_class_Ardillo_Group_setMargined
 
@@ -846,7 +842,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Window_setPosition
 	ZEND_ARG_OBJ_INFO(0, pos, Ardillo\\Point, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_Window_getResizeable arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Window_getResizeable arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Window_setResizeable, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, resizeable, _IS_BOOL, 0)
@@ -864,7 +860,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_Window_onPositionChanged arginfo_class_Ardillo_App_run
 
-#define arginfo_class_Ardillo_Window_isFocused arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Window_isFocused arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_Window_setChild, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, child, Ardillo\\Control, 0)
@@ -887,7 +883,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Ardillo_Area___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, ah, Ardillo\\AreaHandler, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_Area_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_Area_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_Area_queueRedrawAll arginfo_class_Ardillo_App_run
 
@@ -895,7 +891,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Ardillo_DrawPath___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, fillMode, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_DrawPath_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_DrawPath_isValid arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_Ardillo_DrawPath_addRectangle, 0, 2, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, pt, Ardillo\\Point, 0)
@@ -912,45 +908,45 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_Ardillo_HorizontalBox___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_HorizontalBox_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_HorizontalBox_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_VerticalBox___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_VerticalBox_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_VerticalBox_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_DatePicker___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_DatePicker_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_DatePicker_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_TimePicker___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_TimePicker_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_TimePicker_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_PasswordEntry___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_PasswordEntry_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_PasswordEntry_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_SearchEntry___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_SearchEntry_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_SearchEntry_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_NonWrappingMultilineEntry___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_NonWrappingMultilineEntry_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_NonWrappingMultilineEntry_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_HorizontalSeparator___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_HorizontalSeparator_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_HorizontalSeparator_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_VerticalSeparator___construct arginfo_class_Ardillo_ColorButton___construct
 
-#define arginfo_class_Ardillo_VerticalSeparator_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_VerticalSeparator_isValid arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Ardillo_TableValueString___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_TableValueString_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_TableValueString_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_TableValueString_get arginfo_class_Ardillo_Button_getText
 
@@ -958,7 +954,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Ardillo_TableValueImage___construct, 0, 0, 
 	ZEND_ARG_OBJ_INFO(0, img, Ardillo\\Image, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_TableValueImage_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_TableValueImage_isValid arginfo_class_Ardillo_Box_getPadded
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Ardillo_TableValueImage_get, 0, 0, Ardillo\\Image, 0)
 ZEND_END_ARG_INFO()
@@ -967,7 +963,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Ardillo_TableValueInt___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, i, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_TableValueInt_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_TableValueInt_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_TableValueInt_get arginfo_class_Ardillo_AreaKeyEvent_getKey
 
@@ -975,7 +971,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_Ardillo_TableValueColor___construct, 0, 0, 
 	ZEND_ARG_OBJ_INFO(0, color, Ardillo\\Color, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_Ardillo_TableValueColor_isValid arginfo_class_Ardillo_AreaHandler_isValid
+#define arginfo_class_Ardillo_TableValueColor_isValid arginfo_class_Ardillo_Box_getPadded
 
 #define arginfo_class_Ardillo_TableValueColor_get arginfo_class_Ardillo_ColorButton_getColor
 
@@ -1003,7 +999,6 @@ ZEND_METHOD(Ardillo_AreaDrawParams, getClipSize);
 ZEND_METHOD(Ardillo_AreaDrawParams, fill);
 ZEND_METHOD(Ardillo_AreaDrawParams, stroke);
 ZEND_METHOD(Ardillo_AreaDrawParams, transform);
-ZEND_METHOD(Ardillo_AreaHandler, isValid);
 ZEND_METHOD(Ardillo_AreaKeyEvent, getKey);
 ZEND_METHOD(Ardillo_AreaKeyEvent, getExtKey);
 ZEND_METHOD(Ardillo_AreaKeyEvent, getModifier);
@@ -1121,7 +1116,6 @@ ZEND_METHOD(Ardillo_FontButton, __construct);
 ZEND_METHOD(Ardillo_FontButton, isValid);
 ZEND_METHOD(Ardillo_FontButton, onChanged);
 ZEND_METHOD(Ardillo_FontButton, getFont);
-ZEND_METHOD(Ardillo_FontDescriptor, isValid);
 ZEND_METHOD(Ardillo_FontDescriptor, getFamily);
 ZEND_METHOD(Ardillo_FontDescriptor, setFamily);
 ZEND_METHOD(Ardillo_FontDescriptor, getSize);
@@ -1413,7 +1407,7 @@ static const zend_function_entry class_Ardillo_TextStretch_methods[] = {
 };
 
 
-static const zend_function_entry class_Ardillo_TextWeight_methods[] = {
+static const zend_function_entry class_Ardillo_TextStretch_methods[] = {
 	ZEND_FE_END
 };
 
@@ -1450,7 +1444,6 @@ static const zend_function_entry class_Ardillo_AreaDrawParams_methods[] = {
 
 
 static const zend_function_entry class_Ardillo_AreaHandler_methods[] = {
-	ZEND_ME(Ardillo_AreaHandler, isValid, arginfo_class_Ardillo_AreaHandler_isValid, ZEND_ACC_PUBLIC)
 	ZEND_ABSTRACT_ME_WITH_FLAGS(Ardillo_AreaHandler, dragBrokenHandler, arginfo_class_Ardillo_AreaHandler_dragBrokenHandler, ZEND_ACC_PUBLIC|ZEND_ACC_ABSTRACT)
 	ZEND_ABSTRACT_ME_WITH_FLAGS(Ardillo_AreaHandler, drawHandler, arginfo_class_Ardillo_AreaHandler_drawHandler, ZEND_ACC_PUBLIC|ZEND_ACC_ABSTRACT)
 	ZEND_ABSTRACT_ME_WITH_FLAGS(Ardillo_AreaHandler, keyEventHandler, arginfo_class_Ardillo_AreaHandler_keyEventHandler, ZEND_ACC_PUBLIC|ZEND_ACC_ABSTRACT)
@@ -1663,7 +1656,6 @@ static const zend_function_entry class_Ardillo_FontButton_methods[] = {
 
 
 static const zend_function_entry class_Ardillo_FontDescriptor_methods[] = {
-	ZEND_ME(Ardillo_FontDescriptor, isValid, arginfo_class_Ardillo_FontDescriptor_isValid, ZEND_ACC_PUBLIC)
 	ZEND_ME(Ardillo_FontDescriptor, getFamily, arginfo_class_Ardillo_FontDescriptor_getFamily, ZEND_ACC_PUBLIC)
 	ZEND_ME(Ardillo_FontDescriptor, setFamily, arginfo_class_Ardillo_FontDescriptor_setFamily, ZEND_ACC_PUBLIC)
 	ZEND_ME(Ardillo_FontDescriptor, getSize, arginfo_class_Ardillo_FontDescriptor_getSize, ZEND_ACC_PUBLIC)
@@ -2110,6 +2102,7 @@ static zend_class_entry *register_class_Ardillo_Menu(void)
 
 	INIT_NS_CLASS_ENTRY(ce, "Ardillo", "Menu", class_Ardillo_Menu_methods);
 	class_entry = zend_register_internal_class_ex(&ce, NULL);
+	class_entry->ce_flags |= ZEND_ACC_ABSTRACT;
 
 	zval const_Top_value;
 	ZVAL_LONG(&const_Top_value, 0);
@@ -2524,25 +2517,25 @@ static zend_class_entry *register_class_Ardillo_Modifiers(void)
 	class_entry = zend_register_internal_class_ex(&ce, NULL);
 
 	zval const_Ctrl_value;
-	ZVAL_LONG(&const_Ctrl_value, 1 << 0);
+	ZVAL_LONG(&const_Ctrl_value, 1);
 	zend_string *const_Ctrl_name = zend_string_init_interned("Ctrl", sizeof("Ctrl") - 1, 1);
 	zend_declare_class_constant_ex(class_entry, const_Ctrl_name, &const_Ctrl_value, ZEND_ACC_PUBLIC, NULL);
 	zend_string_release(const_Ctrl_name);
 
 	zval const_Alt_value;
-	ZVAL_LONG(&const_Alt_value, 1 << 1);
+	ZVAL_LONG(&const_Alt_value, 2);
 	zend_string *const_Alt_name = zend_string_init_interned("Alt", sizeof("Alt") - 1, 1);
 	zend_declare_class_constant_ex(class_entry, const_Alt_name, &const_Alt_value, ZEND_ACC_PUBLIC, NULL);
 	zend_string_release(const_Alt_name);
 
 	zval const_Shift_value;
-	ZVAL_LONG(&const_Shift_value, 1 << 2);
+	ZVAL_LONG(&const_Shift_value, 4);
 	zend_string *const_Shift_name = zend_string_init_interned("Shift", sizeof("Shift") - 1, 1);
 	zend_declare_class_constant_ex(class_entry, const_Shift_name, &const_Shift_value, ZEND_ACC_PUBLIC, NULL);
 	zend_string_release(const_Shift_name);
 
 	zval const_Super_value;
-	ZVAL_LONG(&const_Super_value, 1 << 3);
+	ZVAL_LONG(&const_Super_value, 8);
 	zend_string *const_Super_name = zend_string_init_interned("Super", sizeof("Super") - 1, 1);
 	zend_declare_class_constant_ex(class_entry, const_Super_name, &const_Super_value, ZEND_ACC_PUBLIC, NULL);
 	zend_string_release(const_Super_name);
@@ -2878,11 +2871,11 @@ static zend_class_entry *register_class_Ardillo_TextStretch(void)
 	return class_entry;
 }
 
-static zend_class_entry *register_class_Ardillo_TextWeight(void)
+static zend_class_entry *register_class_Ardillo_TextStretch(void)
 {
 	zend_class_entry ce, *class_entry;
 
-	INIT_NS_CLASS_ENTRY(ce, "Ardillo", "TextWeight", class_Ardillo_TextWeight_methods);
+	INIT_NS_CLASS_ENTRY(ce, "Ardillo", "TextStretch", class_Ardillo_TextStretch_methods);
 	class_entry = zend_register_internal_class_ex(&ce, NULL);
 
 	zval const_Minimum_value;
@@ -2974,25 +2967,25 @@ static zend_class_entry *register_class_Ardillo_Color(void)
 	class_entry = zend_register_internal_class_ex(&ce, NULL);
 
 	zval property_red_default_value;
-	ZVAL_DOUBLE(&property_red_default_value, 0.0);
+	ZVAL_DOUBLE(&property_red_default_value, 0);
 	zend_string *property_red_name = zend_string_init("red", sizeof("red") - 1, 1);
 	zend_declare_typed_property(class_entry, property_red_name, &property_red_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release(property_red_name);
 
 	zval property_green_default_value;
-	ZVAL_DOUBLE(&property_green_default_value, 0.0);
+	ZVAL_DOUBLE(&property_green_default_value, 0);
 	zend_string *property_green_name = zend_string_init("green", sizeof("green") - 1, 1);
 	zend_declare_typed_property(class_entry, property_green_name, &property_green_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release(property_green_name);
 
 	zval property_blue_default_value;
-	ZVAL_DOUBLE(&property_blue_default_value, 0.0);
+	ZVAL_DOUBLE(&property_blue_default_value, 0);
 	zend_string *property_blue_name = zend_string_init("blue", sizeof("blue") - 1, 1);
 	zend_declare_typed_property(class_entry, property_blue_name, &property_blue_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release(property_blue_name);
 
 	zval property_alpha_default_value;
-	ZVAL_DOUBLE(&property_alpha_default_value, 1.0);
+	ZVAL_DOUBLE(&property_alpha_default_value, 1);
 	zend_string *property_alpha_name = zend_string_init("alpha", sizeof("alpha") - 1, 1);
 	zend_declare_typed_property(class_entry, property_alpha_name, &property_alpha_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release(property_alpha_name);
@@ -3008,13 +3001,13 @@ static zend_class_entry *register_class_Ardillo_Point(void)
 	class_entry = zend_register_internal_class_ex(&ce, NULL);
 
 	zval property_x_default_value;
-	ZVAL_DOUBLE(&property_x_default_value, 0.0);
+	ZVAL_DOUBLE(&property_x_default_value, 0);
 	zend_string *property_x_name = zend_string_init("x", sizeof("x") - 1, 1);
 	zend_declare_typed_property(class_entry, property_x_name, &property_x_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release(property_x_name);
 
 	zval property_y_default_value;
-	ZVAL_DOUBLE(&property_y_default_value, 0.0);
+	ZVAL_DOUBLE(&property_y_default_value, 0);
 	zend_string *property_y_name = zend_string_init("y", sizeof("y") - 1, 1);
 	zend_declare_typed_property(class_entry, property_y_name, &property_y_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release(property_y_name);
@@ -3030,13 +3023,13 @@ static zend_class_entry *register_class_Ardillo_Size(void)
 	class_entry = zend_register_internal_class_ex(&ce, NULL);
 
 	zval property_width_default_value;
-	ZVAL_DOUBLE(&property_width_default_value, 0.0);
+	ZVAL_DOUBLE(&property_width_default_value, 0);
 	zend_string *property_width_name = zend_string_init("width", sizeof("width") - 1, 1);
 	zend_declare_typed_property(class_entry, property_width_name, &property_width_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release(property_width_name);
 
 	zval property_height_default_value;
-	ZVAL_DOUBLE(&property_height_default_value, 0.0);
+	ZVAL_DOUBLE(&property_height_default_value, 0);
 	zend_string *property_height_name = zend_string_init("height", sizeof("height") - 1, 1);
 	zend_declare_typed_property(class_entry, property_height_name, &property_height_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_DOUBLE));
 	zend_string_release(property_height_name);
@@ -3293,7 +3286,7 @@ static zend_class_entry *register_class_Ardillo_DrawStrokeParams(void)
 	class_entry = zend_register_internal_class_ex(&ce, NULL);
 
 	zval const_DEFAULT_MITER_LIMIT_value;
-	ZVAL_DOUBLE(&const_DEFAULT_MITER_LIMIT_value, 10.0);
+	ZVAL_DOUBLE(&const_DEFAULT_MITER_LIMIT_value, 10);
 	zend_string *const_DEFAULT_MITER_LIMIT_name = zend_string_init_interned("DEFAULT_MITER_LIMIT", sizeof("DEFAULT_MITER_LIMIT") - 1, 1);
 	zend_declare_class_constant_ex(class_entry, const_DEFAULT_MITER_LIMIT_name, &const_DEFAULT_MITER_LIMIT_value, ZEND_ACC_PUBLIC, NULL);
 	zend_string_release(const_DEFAULT_MITER_LIMIT_name);
