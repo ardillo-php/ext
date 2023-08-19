@@ -1735,7 +1735,7 @@ class Image
     /**
      * Appends a binary representation of the image
      *
-     * @param list<Color> $pixels Array of image representation pixels (as Color objects)
+     * @param array $pixels Array of image representation pixels (as Color objects)
      * @param Size $size Size of the image representation
      */
     public function append(array $pixels, Size $size): void {}
@@ -2282,14 +2282,14 @@ class Table extends Control
     /**
      * Callback to be executed when the table selection is updated
      *
-     * @param array<int> $selection List of row indices which are selected
+     * @param array $selection List of row indices which are selected
      */
     public function onSelectionChanged(array $selection): void {}
 
     /**
      * Sets the current table selection
      *
-     * @param array<int> $selection List of row indices to be selected
+     * @param array $selection List of row indices to be selected
      */
     public function setSelection(array $selection): void {}
 }
