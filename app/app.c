@@ -1,3 +1,4 @@
+#include <signal.h>
 #include "php.h"
 #include "php_network.h"
 #include "ui.h"

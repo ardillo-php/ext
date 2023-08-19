@@ -12,11 +12,14 @@ config.h
 config.h.in
 config.log
 config.nice
+config.nice.bat
 config.status
 config.sub
 configure
 configure.ac
+configure.bat
 configure.in
+configure.js
 include
 install-sh
 libtool
@@ -41,4 +44,5 @@ tests/**/*.sh
 tests/**/*.db
 tests/**/*.mem
 tmp-php.ini
+x64
 *~

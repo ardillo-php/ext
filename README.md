@@ -1,6 +1,6 @@
 ### Build requirements
 
-- Your operating system build essentials (Xcode/clang on macOS, build-essential on Linux, MS Visual Studio on Windows);
+- Your operating system build essentials (Xcode/clang on macOS, build-essential on Linux, MS Visual Studio 2019 on Windows);
 - PHP development headers and tools;
 - Meson/Ninja build system;
 
@@ -18,4 +18,17 @@ phpize
 ./configure
 make -j
 sudo make install
+```
+
+On Windows, you can use the following commands:
+
+```sh
+git submodule update --init
+cd libui-ng
+meson setup build
+ninja -C build
+cd ..
+phpize
+configure
+nmake
 ```
