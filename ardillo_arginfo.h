@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 12fd286c1d0aa912cb0469c7f7d6e39963711b4d */
+ * Stub hash: f27cd130987ad19978156d58cf08c93eb3f3e126 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_Ardillo_App_get, 0, 0, Ardillo\\App, 1)
 ZEND_END_ARG_INFO()
@@ -1403,6 +1403,11 @@ static const zend_function_entry class_Ardillo_TableValueType_methods[] = {
 
 
 static const zend_function_entry class_Ardillo_TextStretch_methods[] = {
+	ZEND_FE_END
+};
+
+
+static const zend_function_entry class_Ardillo_TextWeight_methods[] = {
 	ZEND_FE_END
 };
 
@@ -2862,6 +2867,94 @@ static zend_class_entry *register_class_Ardillo_TextStretch(void)
 	zend_string *const_UltraExpanded_name = zend_string_init_interned("UltraExpanded", sizeof("UltraExpanded") - 1, 1);
 	zend_declare_class_constant_ex(class_entry, const_UltraExpanded_name, &const_UltraExpanded_value, ZEND_ACC_PUBLIC, NULL);
 	zend_string_release(const_UltraExpanded_name);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Ardillo_TextWeight(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_NS_CLASS_ENTRY(ce, "Ardillo", "TextWeight", class_Ardillo_TextWeight_methods);
+	class_entry = zend_register_internal_class_ex(&ce, NULL);
+
+	zval const_Minimum_value;
+	ZVAL_LONG(&const_Minimum_value, 0);
+	zend_string *const_Minimum_name = zend_string_init_interned("Minimum", sizeof("Minimum") - 1, 1);
+	zend_declare_class_constant_ex(class_entry, const_Minimum_name, &const_Minimum_value, ZEND_ACC_PUBLIC, NULL);
+	zend_string_release(const_Minimum_name);
+
+	zval const_Thin_value;
+	ZVAL_LONG(&const_Thin_value, 100);
+	zend_string *const_Thin_name = zend_string_init_interned("Thin", sizeof("Thin") - 1, 1);
+	zend_declare_class_constant_ex(class_entry, const_Thin_name, &const_Thin_value, ZEND_ACC_PUBLIC, NULL);
+	zend_string_release(const_Thin_name);
+
+	zval const_UltraLight_value;
+	ZVAL_LONG(&const_UltraLight_value, 200);
+	zend_string *const_UltraLight_name = zend_string_init_interned("UltraLight", sizeof("UltraLight") - 1, 1);
+	zend_declare_class_constant_ex(class_entry, const_UltraLight_name, &const_UltraLight_value, ZEND_ACC_PUBLIC, NULL);
+	zend_string_release(const_UltraLight_name);
+
+	zval const_Light_value;
+	ZVAL_LONG(&const_Light_value, 300);
+	zend_string *const_Light_name = zend_string_init_interned("Light", sizeof("Light") - 1, 1);
+	zend_declare_class_constant_ex(class_entry, const_Light_name, &const_Light_value, ZEND_ACC_PUBLIC, NULL);
+	zend_string_release(const_Light_name);
+
+	zval const_Book_value;
+	ZVAL_LONG(&const_Book_value, 350);
+	zend_string *const_Book_name = zend_string_init_interned("Book", sizeof("Book") - 1, 1);
+	zend_declare_class_constant_ex(class_entry, const_Book_name, &const_Book_value, ZEND_ACC_PUBLIC, NULL);
+	zend_string_release(const_Book_name);
+
+	zval const_Normal_value;
+	ZVAL_LONG(&const_Normal_value, 400);
+	zend_string *const_Normal_name = zend_string_init_interned("Normal", sizeof("Normal") - 1, 1);
+	zend_declare_class_constant_ex(class_entry, const_Normal_name, &const_Normal_value, ZEND_ACC_PUBLIC, NULL);
+	zend_string_release(const_Normal_name);
+
+	zval const_Medium_value;
+	ZVAL_LONG(&const_Medium_value, 500);
+	zend_string *const_Medium_name = zend_string_init_interned("Medium", sizeof("Medium") - 1, 1);
+	zend_declare_class_constant_ex(class_entry, const_Medium_name, &const_Medium_value, ZEND_ACC_PUBLIC, NULL);
+	zend_string_release(const_Medium_name);
+
+	zval const_SemiBold_value;
+	ZVAL_LONG(&const_SemiBold_value, 600);
+	zend_string *const_SemiBold_name = zend_string_init_interned("SemiBold", sizeof("SemiBold") - 1, 1);
+	zend_declare_class_constant_ex(class_entry, const_SemiBold_name, &const_SemiBold_value, ZEND_ACC_PUBLIC, NULL);
+	zend_string_release(const_SemiBold_name);
+
+	zval const_Bold_value;
+	ZVAL_LONG(&const_Bold_value, 700);
+	zend_string *const_Bold_name = zend_string_init_interned("Bold", sizeof("Bold") - 1, 1);
+	zend_declare_class_constant_ex(class_entry, const_Bold_name, &const_Bold_value, ZEND_ACC_PUBLIC, NULL);
+	zend_string_release(const_Bold_name);
+
+	zval const_UltraBold_value;
+	ZVAL_LONG(&const_UltraBold_value, 800);
+	zend_string *const_UltraBold_name = zend_string_init_interned("UltraBold", sizeof("UltraBold") - 1, 1);
+	zend_declare_class_constant_ex(class_entry, const_UltraBold_name, &const_UltraBold_value, ZEND_ACC_PUBLIC, NULL);
+	zend_string_release(const_UltraBold_name);
+
+	zval const_Heavy_value;
+	ZVAL_LONG(&const_Heavy_value, 900);
+	zend_string *const_Heavy_name = zend_string_init_interned("Heavy", sizeof("Heavy") - 1, 1);
+	zend_declare_class_constant_ex(class_entry, const_Heavy_name, &const_Heavy_value, ZEND_ACC_PUBLIC, NULL);
+	zend_string_release(const_Heavy_name);
+
+	zval const_UltraHeavy_value;
+	ZVAL_LONG(&const_UltraHeavy_value, 950);
+	zend_string *const_UltraHeavy_name = zend_string_init_interned("UltraHeavy", sizeof("UltraHeavy") - 1, 1);
+	zend_declare_class_constant_ex(class_entry, const_UltraHeavy_name, &const_UltraHeavy_value, ZEND_ACC_PUBLIC, NULL);
+	zend_string_release(const_UltraHeavy_name);
+
+	zval const_Maximum_value;
+	ZVAL_LONG(&const_Maximum_value, 1000);
+	zend_string *const_Maximum_name = zend_string_init_interned("Maximum", sizeof("Maximum") - 1, 1);
+	zend_declare_class_constant_ex(class_entry, const_Maximum_name, &const_Maximum_value, ZEND_ACC_PUBLIC, NULL);
+	zend_string_release(const_Maximum_name);
 
 	return class_entry;
 }
