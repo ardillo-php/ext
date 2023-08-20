@@ -33,3 +33,5 @@ configure
 nmake
 nmake install
 ```
+
+Since libui-ng is being built as a shared library, you might want to copy the libui.dll file (`libui-ng\build\meson-out\libui.dll`) to a directory reachable by your Ardillo applications.
