@@ -9,14 +9,14 @@ if (PHP_ARDILLO != "no") {
     EXTENSION("ardillo", "ardillo.c app\\app.c app\\menu.c app\\task.c app\\stream.c platform\\windows.c platform\\wepoll.c ui\\area_draw_params.c ui\\area_handler.c ui\\area_key_event.c ui\\area_mouse_event.c ui\\box.c ui\\button.c ui\\checkbox.c ui\\color_button.c ui\\combobox.c ui\\control.c ui\\date_time_picker.c ui\\draw_brush.c ui\\draw_brush_gradient_stop.c ui\\draw_matrix.c ui\\draw_stroke_params.c ui\\draw_text_layout_params.c ui\\editable_combobox.c ui\\entry.c ui\\font_button.c ui\\font_descriptor.c ui\\form.c ui\\grid.c ui\\group.c ui\\image.c ui\\label.c ui\\multiline_entry.c ui\\progress_bar.c ui\\radio_buttons.c ui\\separator.c ui\\slider.c ui\\spinbox.c ui\\tab.c ui\\table.c ui\\table_model.c ui\\table_model_handler.c ui\\table_params.c ui\\table_text_column_optional_params.c ui\\table_value.c ui\\window.c ui\\area.c ui\\draw_path.c ui\\horizontal_box.c ui\\vertical_box.c ui\\date_picker.c ui\\time_picker.c ui\\password_entry.c ui\\search_entry.c ui\\non_wrapping_multiline_entry.c ui\\horizontal_separator.c ui\\vertical_separator.c ui\\table_value_string.c ui\\table_value_image.c ui\\table_value_int.c ui\\table_value_color.c ui\\uix.c", true, "/W3 /DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 /I . /I libui-ng");
 
     if (PHP_ARDILLO_DEBUG != "no") {
-        AC_DEFINE("CONFIG_ARDILLO_DEBUG", 1, ["Include debugging support in Ardillo"]);
+        AC_DEFINE("CONFIG_ARDILLO_DEBUG", 1);
     }
 
     if (PHP_ARDILLO_OBJECTS_DEBUG != "no") {
-        AC_DEFINE("CONFIG_ARDILLO_OBJECTS_DEBUG", 1, ["Include object debugging support in Ardillo"]);
+        AC_DEFINE("CONFIG_ARDILLO_OBJECTS_DEBUG", 1);
     }
 
     if (PHP_ARDILLO_REFERENCE_DEBUG != "no") {
-        AC_DEFINE("CONFIG_ARDILLO_REFERENCE_DEBUG", 1, ["Include object reference debugging support in Ardillo"]);
+        AC_DEFINE("CONFIG_ARDILLO_REFERENCE_DEBUG", 1);
     }
 }

@@ -25,10 +25,11 @@ On Windows, you can use the following commands:
 ```sh
 git submodule update --init
 cd libui-ng
-meson setup build
+meson setup build --default-library=shared
 ninja -C build
 cd ..
 phpize
 configure
 nmake
+nmake install
 ```

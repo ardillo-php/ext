@@ -37,6 +37,7 @@
 #define ARDILLO_TERM_ANSI_BRIGHT_CYAN    ARDILLO_TERM_ANSI_ESC_CSI "36;1m"
 #define ARDILLO_TERM_ANSI_BRIGHT_WHITE   ARDILLO_TERM_ANSI_ESC_CSI "37;1m"
 
+#if __unix__
 #if defined(CONFIG_ARDILLO_DEBUG) && CONFIG_ARDILLO_DEBUG
     #define ardillo_debug(...) \
     { \
@@ -75,6 +76,12 @@
 #ifdef CONFIG_ARDILLO_REFERENCE_DEBUG
     #define ardillo_debug_references(x, ...) if (x <= CONFIG_ARDILLO_REFERENCE_DEBUG) { ardillo_component_debug(ARDILLO_TERM_ANSI_BRIGHT_CYAN, " objrefs", __VA_ARGS__); }
 #else
+    #define ardillo_debug_references(x, ...)
+#endif
+#else
+    #define ardillo_debug(...)
+    #define ardillo_assert(x)
+    #define ardillo_debug_objects(x, ...)
     #define ardillo_debug_references(x, ...)
 #endif
 
