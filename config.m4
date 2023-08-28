@@ -55,11 +55,11 @@ if test "$PHP_ARDILLO" != "no"; then
         cd ./libui-ng && meson setup --default-library=static build && ninja -C build && cd ..
     fi
 
-    ARDILLO_CFLAGS="-I./libui-ng"
+    ARDILLO_CFLAGS="-Wl,--verbose -I./libui-ng"
     UI_LIB="-L./libui-ng/build/meson-out -Wl,-Bstatic -lui"
 
     if test "$ARDILLO_OSX" == "no"; then
-        UI_LIB="`pkg-config --cflags --libs gtk+-3.0` $UI_LIB"
+        UI_LIB="$UI_LIB -Wl,--no-as-needed `pkg-config --cflags --libs gtk+-3.0`"
         ARDILLO_CFLAGS="`pkg-config --cflags gtk+-3.0` $ARDILLO_CFLAGS"
     else
         LDFLAGS="-framework Foundation -framework AppKit -undefined dynamic_lookup $CFLAGS"
