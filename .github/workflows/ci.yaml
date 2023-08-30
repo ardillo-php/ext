@@ -1,13 +1,12 @@
-name: PECL
+name: CI
 
 on:
   push:
-    tags:
-      - '*'
+  pull_request:
 
 jobs:
-  PublishAssets:
-    name: Build and publish assets (PHP ${{ matrix.php }} on ${{ matrix.os }})
+  CI:
+    name: CI (PHP ${{ matrix.php }} on ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -22,15 +21,16 @@ jobs:
           php-version: 8.2
       - name: Fetch libui-ng
         run: git submodule update --init
-      - name: Build package
-        run: pecl package package.xml
-      - name: Tryout package
+      - name: Build extension
         run: |
-          sudo python3 -m pip install --upgrade pip setuptools wheel
-          sudo pip3 install meson ninja
-          sudo apt-get update -y
-          sudo apt-get install -y libgtk-3-dev xvfb
-          sudo pecl install ardillo-*.tgz
+          python3 -m pip install --upgrade pip setuptools wheel
+          pip3 install meson ninja
+          apt-get update -y
+          apt-get install -y libgtk-3-dev xvfb
+          phpize
+          ./configure
+          make -j
+          sudo make install
       - name: Check for PHP startup warnings
         run: |
           xvfb-run -a php -d extension=ardillo -d display_errors=stderr -d display_startup_errors=1 -d error_reporting=-1 -r ';' 2>/tmp/php-startup-warnings
@@ -42,11 +42,5 @@ jobs:
           echo "PHP didn't raise any warnings at startup."
       - name: Inspect extension
         run: xvfb-run -a php -dextension=ardillo --ri ardillo
-      - uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ardillo-*.tgz
-          file_glob: true
-          tag: ${{ github.ref }}
-          prerelease: true
-          overwrite: true
+      - name: Run tests
+        run: xvfb-run make test

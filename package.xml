@@ -342,6 +342,9 @@
                     <file name="winutil.cpp" role="src"/>
                 </dir>
             </dir>
+            <dir name="tests">
+                <file name="001.phpt" role="test"/>
+            </dir>
         </dir>
     </contents>
     <dependencies>
