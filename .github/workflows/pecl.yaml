@@ -7,7 +7,7 @@ on:
 
 jobs:
   PublishAssets:
-    name: PublishAssets
+    name: Publish Assets
     runs-on: ubuntu-latest
 
     steps:
@@ -25,8 +25,8 @@ jobs:
         run: git submodule update --init
       - name: Build package
         run: pecl package package.xml
-      - name: Test package
-        run: pecl install ardillo-*.tgz
+      - name: Tryout package
+        run: sudo pecl install ardillo-*.tgz
       - name: Check for PHP startup warnings
         run: |
           xvfb-run php -d display_errors=stderr -d display_startup_errors=1 -d error_reporting=-1 -r ';' 2>/tmp/php-startup-warnings
