@@ -44,4 +44,8 @@ jobs:
       - name: Inspect extension
         run: xvfb-run -a php --ri ardillo
       - name: Run tests
-        run: xvfb-run -a php run-tests.php -q -v || xvfb-run -a php tests/001.php
+        run: |
+          echo '#!/bin/sh' > ./xvfb-php
+          echo 'xvfb-run -a php "$@"' >> ./xvfb-php
+          chmod +x ./xvfb-php
+          php run-tests.php -q -v -p ./xvfb-php
