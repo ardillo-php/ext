@@ -15,18 +15,17 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
-      - name: Prepare environment
-        run: |
-          python3 -m pip install --upgrade pip setuptools wheel
-          pip3 install meson ninja
-          sudo apt-get update -y
-          sudo apt-get install -y libgtk-3-dev xvfb
       - name: Fetch libui-ng
         run: git submodule update --init
       - name: Build package
         run: pecl package package.xml
       - name: Tryout package
-        run: sudo pecl install ardillo-*.tgz
+        run: |
+          python3 -m pip install --upgrade pip setuptools wheel
+          pip3 install meson ninja
+          sudo apt-get update -y
+          sudo apt-get install -y libgtk-3-dev xvfb
+          sudo pecl install ardillo-*.tgz
       - name: Check for PHP startup warnings
         run: |
           xvfb-run php -d display_errors=stderr -d display_startup_errors=1 -d error_reporting=-1 -r ';' 2>/tmp/php-startup-warnings
