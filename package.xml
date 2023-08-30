@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package
+    xmlns="http://pear.php.net/dtd/package-2.0"
+    xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+    <name>ardillo</name>
+    <channel>pecl.php.net</channel>
+    <summary>Cross-platform UI extension with asynchronous I/O bindings.</summary>
+    <description>Wraps the libui-ng library in an object-oriented fashion and adds a set of routines for asynchronous I/O.</description>
+    <lead>
+        <name>Ciprian Dosoftei</name>
+        <user>ciprian</user>
+        <email>ciprian@ardillo.dev</email>
+        <active>yes</active>
+    </lead>
+    <date>2023-08-30</date>
+    <version>
+        <release>0.1.0</release>
+        <api>0.1.0</api>
+    </version>
+    <stability>
+        <release>beta</release>
+        <api>beta</api>
+    </stability>
+    <license uri="https://opensource.org/license/mit/">MIT License</license>
+    <notes>Initial public version</notes>
+    <contents>
+        <dir name="/">
+            <file name="ardillo.c" role="src"/>
+            <file name="ardillo_arginfo.h" role="src"/>
+            <file name="config.m4" role="src"/>
+            <file name="config.w32" role="src"/>
+            <file name="php_ardillo.h" role="src"/>
+            <file name="Makefile.frag" role="src"/>
+            <file name="README.md" role="doc"/>
+            <dir name="app">
+                <file name="app.c" role="src"/>
+                <file name="app.h" role="src"/>
+                <file name="menu.c" role="src"/>
+                <file name="menu.h" role="src"/>
+                <file name="stream.c" role="src"/>
+                <file name="stream.h" role="src"/>
+                <file name="task.c" role="src"/>
+                <file name="task.h" role="src"/>
+            </dir>
+            <dir name="platform">
+                <file name="darwin.c" role="src"/>
+                <file name="darwin.h" role="src"/>
+                <file name="unix.c" role="src"/>
+                <file name="unix.h" role="src"/>
+                <file name="wepoll.c" role="src"/>
+                <file name="wepoll.h" role="src"/>
+                <file name="windows.c" role="src"/>
+                <file name="windows.h" role="src"/>
+            </dir>
+            <dir name="ui">
+                <file name="area.c" role="src"/>
+                <file name="area_draw_params.c" role="src"/>
+                <file name="area_handler.c" role="src"/>
+                <file name="area_key_event.c" role="src"/>
+                <file name="area_mouse_event.c" role="src"/>
+                <file name="box.c" role="src"/>
+                <file name="button.c" role="src"/>
+                <file name="checkbox.c" role="src"/>
+                <file name="color_button.c" role="src"/>
+                <file name="combobox.c" role="src"/>
+                <file name="control.c" role="src"/>
+                <file name="date_picker.c" role="src"/>
+                <file name="date_time_picker.c" role="src"/>
+                <file name="draw_brush.c" role="src"/>
+                <file name="draw_brush_gradient_stop.c" role="src"/>
+                <file name="draw_matrix.c" role="src"/>
+                <file name="draw_path.c" role="src"/>
+                <file name="draw_stroke_params.c" role="src"/>
+                <file name="draw_text_layout_params.c" role="src"/>
+                <file name="editable_combobox.c" role="src"/>
+                <file name="entry.c" role="src"/>
+                <file name="font_button.c" role="src"/>
+                <file name="font_descriptor.c" role="src"/>
+                <file name="form.c" role="src"/>
+                <file name="grid.c" role="src"/>
+                <file name="group.c" role="src"/>
+                <file name="horizontal_box.c" role="src"/>
+                <file name="horizontal_separator.c" role="src"/>
+                <file name="image.c" role="src"/>
+                <file name="init_options.c" role="src"/>
+                <file name="label.c" role="src"/>
+                <file name="multiline_entry.c" role="src"/>
+                <file name="non_wrapping_multiline_entry.c" role="src"/>
+                <file name="password_entry.c" role="src"/>
+                <file name="progress_bar.c" role="src"/>
+                <file name="radio_buttons.c" role="src"/>
+                <file name="search_entry.c" role="src"/>
+                <file name="separator.c" role="src"/>
+                <file name="slider.c" role="src"/>
+                <file name="spinbox.c" role="src"/>
+                <file name="tab.c" role="src"/>
+                <file name="table.c" role="src"/>
+                <file name="table_model.c" role="src"/>
+                <file name="table_model_handler.c" role="src"/>
+                <file name="table_params.c" role="src"/>
+                <file name="table_selection.c" role="src"/>
+                <file name="table_text_column_optional_params.c" role="src"/>
+                <file name="table_value.c" role="src"/>
+                <file name="table_value_color.c" role="src"/>
+                <file name="table_value_image.c" role="src"/>
+                <file name="table_value_int.c" role="src"/>
+                <file name="table_value_string.c" role="src"/>
+                <file name="time_picker.c" role="src"/>
+                <file name="types.h" role="src"/>
+                <file name="uix.c" role="src"/>
+                <file name="vertical_box.c" role="src"/>
+                <file name="vertical_separator.c" role="src"/>
+                <file name="window.c" role="src"/>
+            </dir>
+            <dir name="util">
+                <file name="common.h" role="src"/>
+                <file name="debug.h" role="src"/>
+            </dir>
+            <!-- libui-ng -->
+            <dir name="libui-ng">
+                <file name="meson_options.txt" role="src"/>
+                <file name="meson.build" role="src"/>
+                <file name="ui_darwin.h" role="src"/>
+                <file name="ui_unix.h" role="src"/>
+                <file name="ui_windows.h" role="src"/>
+                <file name="ui.h" role="src"/>
+                <dir name="common">
+                    <file name="areaevents.c" role="src"/>
+                    <file name="attribute.c" role="src"/>
+                    <file name="attrlist.c" role="src"/>
+                    <file name="attrstr.c" role="src"/>
+                    <file name="attrstr.h" role="src"/>
+                    <file name="control.c" role="src"/>
+                    <file name="controlsigs.h" role="src"/>
+                    <file name="debug.c" role="src"/>
+                    <file name="matrix.c" role="src"/>
+                    <file name="meson.build" role="src"/>
+                    <file name="OLD_table.c" role="src"/>
+                    <file name="opentype.c" role="src"/>
+                    <file name="shouldquit.c" role="src"/>
+                    <file name="table.c" role="src"/>
+                    <file name="table.h" role="src"/>
+                    <file name="tablemodel.c" role="src"/>
+                    <file name="tablevalue.c" role="src"/>
+                    <file name="uipriv.h" role="src"/>
+                    <file name="userbugs.c" role="src"/>
+                    <file name="utf.c" role="src"/>
+                    <file name="utf.h" role="src"/>
+                </dir>
+                <dir name="darwin">
+                    <file name="aat.m" role="src"/>
+                    <file name="alloc.m" role="src"/>
+                    <file name="areaevents.m" role="src"/>
+                    <file name="area.m" role="src"/>
+                    <file name="attrstr.h" role="src"/>
+                    <file name="attrstr.m" role="src"/>
+                    <file name="autolayout.m" role="src"/>
+                    <file name="box.m" role="src"/>
+                    <file name="button.m" role="src"/>
+                    <file name="checkbox.m" role="src"/>
+                    <file name="colorbutton.m" role="src"/>
+                    <file name="combobox.m" role="src"/>
+                    <file name="control.m" role="src"/>
+                    <file name="datetimepicker.m" role="src"/>
+                    <file name="debug.m" role="src"/>
+                    <file name="draw.h" role="src"/>
+                    <file name="draw.m" role="src"/>
+                    <file name="drawtext.m" role="src"/>
+                    <file name="editablecombo.m" role="src"/>
+                    <file name="entry.m" role="src"/>
+                    <file name="event.m" role="src"/>
+                    <file name="fontbutton.m" role="src"/>
+                    <file name="fontmatch.m" role="src"/>
+                    <file name="fonttraits.m" role="src"/>
+                    <file name="fontvariation.m" role="src"/>
+                    <file name="form.m" role="src"/>
+                    <file name="future.m" role="src"/>
+                    <file name="graphemes.m" role="src"/>
+                    <file name="grid.m" role="src"/>
+                    <file name="group.m" role="src"/>
+                    <file name="image.m" role="src"/>
+                    <file name="label.m" role="src"/>
+                    <file name="main.m" role="src"/>
+                    <file name="menu.m" role="src"/>
+                    <file name="meson.build" role="src"/>
+                    <file name="multilineentry.m" role="src"/>
+                    <file name="nstextfield.m" role="src"/>
+                    <file name="opentype.m" role="src"/>
+                    <file name="progressbar.m" role="src"/>
+                    <file name="radiobuttons.m" role="src"/>
+                    <file name="scrollview.m" role="src"/>
+                    <file name="separator.m" role="src"/>
+                    <file name="sierra.h" role="src"/>
+                    <file name="slider.m" role="src"/>
+                    <file name="spinbox.m" role="src"/>
+                    <file name="stddialogs.m" role="src"/>
+                    <file name="tablecolumn.m" role="src"/>
+                    <file name="table.h" role="src"/>
+                    <file name="table.m" role="src"/>
+                    <file name="tab.m" role="src"/>
+                    <file name="text.m" role="src"/>
+                    <file name="uipriv_darwin.h" role="src"/>
+                    <file name="undocumented.m" role="src"/>
+                    <file name="util.m" role="src"/>
+                    <file name="window.m" role="src"/>
+                    <file name="winmoveresize.m" role="src"/>
+                </dir>
+                <dir name="unix">
+                    <file name="alloc.c" role="src"/>
+                    <file name="area.c" role="src"/>
+                    <file name="attrstr.c" role="src"/>
+                    <file name="attrstr.h" role="src"/>
+                    <file name="box.c" role="src"/>
+                    <file name="button.c" role="src"/>
+                    <file name="cellrendererbutton.c" role="src"/>
+                    <file name="checkbox.c" role="src"/>
+                    <file name="child.c" role="src"/>
+                    <file name="colorbutton.c" role="src"/>
+                    <file name="combobox.c" role="src"/>
+                    <file name="control.c" role="src"/>
+                    <file name="datetimepicker.c" role="src"/>
+                    <file name="debug.c" role="src"/>
+                    <file name="draw.c" role="src"/>
+                    <file name="draw.h" role="src"/>
+                    <file name="drawmatrix.c" role="src"/>
+                    <file name="drawpath.c" role="src"/>
+                    <file name="drawtext.c" role="src"/>
+                    <file name="editablecombo.c" role="src"/>
+                    <file name="entry.c" role="src"/>
+                    <file name="fontbutton.c" role="src"/>
+                    <file name="fontmatch.c" role="src"/>
+                    <file name="form.c" role="src"/>
+                    <file name="future.c" role="src"/>
+                    <file name="graphemes.c" role="src"/>
+                    <file name="grid.c" role="src"/>
+                    <file name="group.c" role="src"/>
+                    <file name="image.c" role="src"/>
+                    <file name="label.c" role="src"/>
+                    <file name="main.c" role="src"/>
+                    <file name="menu.c" role="src"/>
+                    <file name="meson.build" role="src"/>
+                    <file name="multilineentry.c" role="src"/>
+                    <file name="opentype.c" role="src"/>
+                    <file name="progressbar.c" role="src"/>
+                    <file name="radiobuttons.c" role="src"/>
+                    <file name="separator.c" role="src"/>
+                    <file name="slider.c" role="src"/>
+                    <file name="spinbox.c" role="src"/>
+                    <file name="stddialogs.c" role="src"/>
+                    <file name="tab.c" role="src"/>
+                    <file name="table.c" role="src"/>
+                    <file name="table.h" role="src"/>
+                    <file name="tablemodel.c" role="src"/>
+                    <file name="text.c" role="src"/>
+                    <file name="uipriv_unix.h" role="src"/>
+                    <file name="util.c" role="src"/>
+                    <file name="window.c" role="src"/>
+                </dir>
+                <dir name="windows">
+                    <dir name="_rc2bin">
+                        <file name="build.bat" role="src"/>
+                        <file name="libui.manifest" role="src"/>
+                        <file name="main.cpp" role="src"/>
+                        <file name="resources.hpp" role="src"/>
+                        <file name="resources.rc" role="src"/>
+                        <file name="winapi.hpp" role="src"/>
+                    </dir>
+                    <file name="alloc.cpp" role="src"/>
+                    <file name="area.cpp" role="src"/>
+                    <file name="areadraw.cpp" role="src"/>
+                    <file name="areaevents.cpp" role="src"/>
+                    <file name="area.hpp" role="src"/>
+                    <file name="areascroll.cpp" role="src"/>
+                    <file name="areautil.cpp" role="src"/>
+                    <file name="attrstr.cpp" role="src"/>
+                    <file name="attrstr.hpp" role="src"/>
+                    <file name="box.cpp" role="src"/>
+                    <file name="button.cpp" role="src"/>
+                    <file name="checkbox.cpp" role="src"/>
+                    <file name="colorbutton.cpp" role="src"/>
+                    <file name="colordialog.cpp" role="src"/>
+                    <file name="combobox.cpp" role="src"/>
+                    <file name="compilerver.hpp" role="src"/>
+                    <file name="container.cpp" role="src"/>
+                    <file name="control.cpp" role="src"/>
+                    <file name="d2dscratch.cpp" role="src"/>
+                    <file name="datetimepicker.cpp" role="src"/>
+                    <file name="debug.cpp" role="src"/>
+                    <file name="draw.cpp" role="src"/>
+                    <file name="draw.hpp" role="src"/>
+                    <file name="drawmatrix.cpp" role="src"/>
+                    <file name="drawpath.cpp" role="src"/>
+                    <file name="drawtext.cpp" role="src"/>
+                    <file name="dwrite.cpp" role="src"/>
+                    <file name="editablecombo.cpp" role="src"/>
+                    <file name="entry.cpp" role="src"/>
+                    <file name="events.cpp" role="src"/>
+                    <file name="fontbutton.cpp" role="src"/>
+                    <file name="fontdialog.cpp" role="src"/>
+                    <file name="fontmatch.cpp" role="src"/>
+                    <file name="form.cpp" role="src"/>
+                    <file name="graphemes.cpp" role="src"/>
+                    <file name="grid.cpp" role="src"/>
+                    <file name="group.cpp" role="src"/>
+                    <file name="image.cpp" role="src"/>
+                    <file name="init.cpp" role="src"/>
+                    <file name="label.cpp" role="src"/>
+                    <file name="libui.manifest" role="src"/>
+                    <file name="main.cpp" role="src"/>
+                    <file name="menu.cpp" role="src"/>
+                    <file name="meson.build" role="src"/>
+                    <file name="multilineentry.cpp" role="src"/>
+                    <file name="notes" role="src"/>
+                    <file name="opentype.cpp" role="src"/>
+                    <file name="parent.cpp" role="src"/>
+                    <file name="progressbar.cpp" role="src"/>
+                    <file name="radiobuttons.cpp" role="src"/>
+                    <file name="resources.hpp" role="src"/>
+                    <file name="resources.rc" role="src"/>
+                    <file name="separator.cpp" role="src"/>
+                    <file name="sizing.cpp" role="src"/>
+                    <file name="slider.cpp" role="src"/>
+                    <file name="spinbox.cpp" role="src"/>
+                    <file name="stddialogs.cpp" role="src"/>
+                    <file name="tab.cpp" role="src"/>
+                    <file name="table.cpp" role="src"/>
+                    <file name="tabledispinfo.cpp" role="src"/>
+                    <file name="tabledraw.cpp" role="src"/>
+                    <file name="tableediting.cpp" role="src"/>
+                    <file name="table.hpp" role="src"/>
+                    <file name="tablemetrics.cpp" role="src"/>
+                    <file name="tabpage.cpp" role="src"/>
+                    <file name="text.cpp" role="src"/>
+                    <file name="_uipriv_migrate.hpp" role="src"/>
+                    <file name="uipriv_windows.hpp" role="src"/>
+                    <file name="utf16.cpp" role="src"/>
+                    <file name="utilwin.cpp" role="src"/>
+                    <file name="winapi.hpp" role="src"/>
+                    <file name="window.cpp" role="src"/>
+                    <file name="winpublic.cpp" role="src"/>
+                    <file name="winutil.cpp" role="src"/>
+                </dir>
+            </dir>
+            <dir name="tests">
+                <file name="001.phpt" role="test"/>
+            </dir>
+        </dir>
+    </contents>
+    <dependencies>
+        <required>
+            <php>
+                <min>8.1.0</min>
+            </php>
+            <pearinstaller>
+                <min>1.4.3</min>
+            </pearinstaller>
+        </required>
+    </dependencies>
+    <providesextension>ardillo</providesextension>
+    <extsrcrelease/>
+    <changelog>
+        <release>
+            <date>2023-08-30</date>
+            <time>22:48:17</time>
+            <version>
+                <release>0.1.0</release>
+                <api>0.1.0</api>
+            </version>
+            <stability>
+                <release>beta</release>
+                <api>beta</api>
+            </stability>
+            <license uri="https://opensource.org/license/mit/">MIT License</license>
+            <notes>Initial public version</notes>
+        </release>
+    </changelog>
+</package>
