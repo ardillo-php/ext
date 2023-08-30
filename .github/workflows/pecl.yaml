@@ -41,7 +41,7 @@ jobs:
           fi
           echo "PHP didn't raise any warnings at startup."
       - name: Inspect extension
-        run: xvfb-run php --ri ardillo
+        run: xvfb-run php -dextension=ardillo --ri ardillo
       - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
