@@ -48,4 +48,4 @@ jobs:
           echo '#!/bin/sh' > ./xvfb-php
           echo 'xvfb-run -a php "$@"' >> ./xvfb-php
           chmod +x ./xvfb-php
-          php run-tests.php -q -v -p ./xvfb-php
+          xvfb-run -a php run-tests.php -q -v -p ./xvfb-php
