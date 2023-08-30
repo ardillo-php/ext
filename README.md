@@ -19,10 +19,10 @@ For Linux builds, you will also need the GTK development headers.
 
 Please note this method is currently available just for Linux and macOS.
 
-Download the [latest extension package](https://github.com/ardillo-php/ext/releases/download/x0.1.0/ardillo-0.1.0.tgz) manually or via curl:
+Download the [latest extension package](https://github.com/ardillo-php/ext/releases/download/v0.1.0/ardillo-0.1.0.tgz) manually or via curl:
 
 ```sh
-curl -s -L https://github.com/ardillo-php/ext/releases/download/x0.1.0/ardillo-0.1.0.tgz -o ardillo.tgz
+curl -s -L https://github.com/ardillo-php/ext/releases/download/v0.1.0/ardillo-0.1.0.tgz -o ardillo.tgz
 ```
 
 Then install it using PECL:
