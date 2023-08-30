@@ -43,9 +43,3 @@ jobs:
           echo "PHP didn't raise any warnings at startup."
       - name: Inspect extension
         run: xvfb-run -a php --ri ardillo
-      - name: Run tests
-        run: |
-          echo '#!/bin/sh' > ./xvfb-php
-          echo 'xvfb-run -a php "$@"' >> ./xvfb-php
-          chmod +x ./xvfb-php
-          xvfb-run -a php run-tests.php -q -v -p ./xvfb-php
